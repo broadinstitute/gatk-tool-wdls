@@ -1,0 +1,172 @@
+version: 1.2
+workflows:
+   - name: ApplyBQSR
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ApplyBQSR.wdl
+     testParameterFiles:
+     -  /wdls/ApplyBQSRInputs.json
+   - name: ApplyBQSRAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ApplyBQSRAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/ApplyBQSRAllArgsInputs.json
+   - name: BaseRecalibrator
+     subclass: WDL
+     primaryDescriptorPath: /wdls/BaseRecalibrator.wdl
+     testParameterFiles:
+     -  /wdls/BaseRecalibratorInputs.json
+   - name: BaseRecalibratorAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/BaseRecalibratorAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/BaseRecalibratorAllArgsInputs.json
+   - name: ClipReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ClipReads.wdl
+     testParameterFiles:
+     -  /wdls/ClipReadsInputs.json
+   - name: ClipReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ClipReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/ClipReadsAllArgsInputs.json
+   - name: CollectReadCounts
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CollectReadCounts.wdl
+     testParameterFiles:
+     -  /wdls/CollectReadCountsInputs.json
+   - name: CollectReadCountsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CollectReadCountsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/CollectReadCountsAllArgsInputs.json
+   - name: CombineGVCFs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CombineGVCFs.wdl
+     testParameterFiles:
+     -  /wdls/CombineGVCFsInputs.json
+   - name: CombineGVCFsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CombineGVCFsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/CombineGVCFsAllArgsInputs.json
+   - name: CountBases
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CountBases.wdl
+     testParameterFiles:
+     -  /wdls/CountBasesInputs.json
+   - name: CountBasesAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CountBasesAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/CountBasesAllArgsInputs.json
+   - name: CountReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CountReads.wdl
+     testParameterFiles:
+     -  /wdls/CountReadsInputs.json
+   - name: CountReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/CountReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/CountReadsAllArgsInputs.json
+   - name: FixMisencodedBaseQualityReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/FixMisencodedBaseQualityReads.wdl
+     testParameterFiles:
+     -  /wdls/FixMisencodedBaseQualityReadsInputs.json
+   - name: FixMisencodedBaseQualityReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/FixMisencodedBaseQualityReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/FixMisencodedBaseQualityReadsAllArgsInputs.json
+   - name: FlagStat
+     subclass: WDL
+     primaryDescriptorPath: /wdls/FlagStat.wdl
+     testParameterFiles:
+     -  /wdls/FlagStatInputs.json
+   - name: FlagStatAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/FlagStatAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/FlagStatAllArgsInputs.json
+   - name: GatherTranches
+     subclass: WDL
+     primaryDescriptorPath: /wdls/GatherTranches.wdl
+     testParameterFiles:
+     -  /wdls/GatherTranchesInputs.json
+   - name: GatherTranchesAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/GatherTranchesAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/GatherTranchesAllArgsInputs.json
+   - name: LeftAlignIndels
+     subclass: WDL
+     primaryDescriptorPath: /wdls/LeftAlignIndels.wdl
+     testParameterFiles:
+     -  /wdls/LeftAlignIndelsInputs.json
+   - name: LeftAlignIndelsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/LeftAlignIndelsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/LeftAlignIndelsAllArgsInputs.json
+   - name: PrintReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/PrintReads.wdl
+     testParameterFiles:
+     -  /wdls/PrintReadsInputs.json
+   - name: PrintReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/PrintReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/PrintReadsAllArgsInputs.json
+   - name: ReadAnonymizer
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ReadAnonymizer.wdl
+     testParameterFiles:
+     -  /wdls/ReadAnonymizerInputs.json
+   - name: ReadAnonymizerAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/ReadAnonymizerAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/ReadAnonymizerAllArgsInputs.json
+   - name: RevertBaseQualityScores
+     subclass: WDL
+     primaryDescriptorPath: /wdls/RevertBaseQualityScores.wdl
+     testParameterFiles:
+     -  /wdls/RevertBaseQualityScoresInputs.json
+   - name: RevertBaseQualityScoresAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/RevertBaseQualityScoresAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/RevertBaseQualityScoresAllArgsInputs.json
+   - name: SplitNCigarReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/SplitNCigarReads.wdl
+     testParameterFiles:
+     -  /wdls/SplitNCigarReadsInputs.json
+   - name: SplitNCigarReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/SplitNCigarReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/SplitNCigarReadsAllArgsInputs.json
+   - name: SplitReads
+     subclass: WDL
+     primaryDescriptorPath: /wdls/SplitReads.wdl
+     testParameterFiles:
+     -  /wdls/SplitReadsInputs.json
+   - name: SplitReadsAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/SplitReadsAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/SplitReadsAllArgsInputs.json
+   - name: UnmarkDuplicates
+     subclass: WDL
+     primaryDescriptorPath: /wdls/UnmarkDuplicates.wdl
+     testParameterFiles:
+     -  /wdls/UnmarkDuplicatesInputs.json
+   - name: UnmarkDuplicatesAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/UnmarkDuplicatesAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/UnmarkDuplicatesAllArgsInputs.json

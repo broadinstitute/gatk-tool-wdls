@@ -1,0 +1,13 @@
+{
+  "GatherTranches.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "GatherTranches.gatk": "gatk",
+  "GatherTranches.memoryRequirements": "4G",
+  "GatherTranches.diskRequirements": "local-disk 40 HDD",
+  "GatherTranches.cpuRequirements": "2",
+  "GatherTranches.preemptibleRequirements": "3",
+  "GatherTranches.bootdisksizegbRequirements": "15",
+
+  "GatherTranches.input_arg": "Array[File]",
+  "GatherTranches.mode": "String",
+  "GatherTranches.output_arg": "String"
+}

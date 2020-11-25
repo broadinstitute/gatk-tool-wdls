@@ -1,0 +1,14 @@
+{
+  "RevertBaseQualityScores.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "RevertBaseQualityScores.gatk": "gatk",
+  "RevertBaseQualityScores.memoryRequirements": "4G",
+  "RevertBaseQualityScores.diskRequirements": "local-disk 40 HDD",
+  "RevertBaseQualityScores.cpuRequirements": "2",
+  "RevertBaseQualityScores.preemptibleRequirements": "3",
+  "RevertBaseQualityScores.bootdisksizegbRequirements": "15",
+
+  "RevertBaseQualityScores.inputIndex": "Array[File]",
+  "RevertBaseQualityScores.input_arg": "Array[File]",
+  "RevertBaseQualityScores.outputIndex": "String",
+  "RevertBaseQualityScores.output_arg": "String"
+}

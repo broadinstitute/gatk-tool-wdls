@@ -1,0 +1,25 @@
+{
+  "GatherTranches.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "GatherTranches.gatk": "gatk",
+  "GatherTranches.memoryRequirements": "4G",
+  "GatherTranches.diskRequirements": "local-disk 40 HDD",
+  "GatherTranches.cpuRequirements": "2",
+  "GatherTranches.preemptibleRequirements": "3",
+  "GatherTranches.bootdisksizegbRequirements": "15",
+
+  "GatherTranches.input_arg":"Array[File]",
+  "GatherTranches.mode":"String",
+  "GatherTranches.output_arg":"String",
+
+  "GatherTranches.gcs_max_retries":20,
+  "GatherTranches.gcs_project_for_requester_pays":null,
+  "GatherTranches.truth_sensitivity_tranche":[100.0, 99.9, 99.0, 90.0],
+
+  "GatherTranches.gatk_config_file":null,
+  "GatherTranches.QUIET":false,
+  "GatherTranches.tmp_dir":null,
+  "GatherTranches.use_jdk_deflater":false,
+  "GatherTranches.use_jdk_inflater":false,
+  "GatherTranches.verbosity":"INFO"
+
+}

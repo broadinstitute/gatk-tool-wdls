@@ -1,0 +1,514 @@
+version 1.0
+
+# Run BaseRecalibrator (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+#
+# Generates recalibration table for Base Quality Score Recalibration (BQSR)
+#
+#  General Workflow (non-tool) Arguments
+#    dockerImage                                        Docker image for this workflow
+#    gatk                                               Location of gatk to run for this workflow
+#    memoryRequirements                                 Runtime memory requirements for this workflow
+#    diskRequirements                                   Runtime disk requirements for this workflow
+#    cpuRequirements                                    Runtime CPU count for this workflow
+#    preemptibleRequirements                            Runtime preemptible count for this workflow
+#    bootdisksizegbRequirements                         Runtime boot disk size for this workflow
+#
+#  Required Tool Arguments
+#    input_arg                                          BAM/SAM/CRAM file containing reads                          
+#    inputIndex                                         Optional Companion resource for input_arg                            
+#    known_sites                                        One or more databases of known polymorphic sites used to exclude regions around 
+#    output_arg                                         The output recalibration table file to create               
+#    reference                                          Reference sequence file                                     
+#    referenceIndex                                     Companion resource for reference                            
+#    referenceDictionary                                Companion resource for reference                            
+#
+#  Optional Tool Arguments
+#    binary_tag_name                                    the binary tag covariate name if using it                   
+#    bqsr_baq_gap_open_penalty                          BQSR BAQ gap open penalty (Phred Scaled).  Default value is 40.  30 is perhaps b
+#    cloud_index_prefetch_buffer                        Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP
+#    cloud_prefetch_buffer                              Size of the cloud-only prefetch buffer (in MB; 0 to disable).
+#    default_base_qualities                             Assign a default base quality                               
+#    deletions_default_quality                          default quality for the base deletions covariate            
+#    disable_bam_index_caching                          If true, dont cache bam indexes, this will reduce memory requirements but may ha
+#    disable_sequence_dictionary_validation             If specified, do not check the sequence dictionaries from our inputs for compati
+#    gcs_max_retries                                    If the GCS bucket channel errors out, how many times it will attempt to re-initi
+#    gcs_project_for_requester_pays                     Project to bill when accessing requester pays buckets. If unset, these buckets c
+#    indels_context_size                                Size of the k-mer context to be used for base insertions and deletions
+#    insertions_default_quality                         default quality for the base insertions covariate           
+#    interval_merging_rule                              Interval merging rule for abutting intervals                
+#    intervals                                          One or more genomic intervals over which to operate         
+#    low_quality_tail                                   minimum quality for the bases in the tail of the reads to be considered
+#    maximum_cycle_value                                The maximum cycle value permitted for the Cycle covariate   
+#    mismatches_context_size                            Size of the k-mer context to be used for base mismatches    
+#    mismatches_default_quality                         default quality for the base mismatches covariate           
+#    preserve_qscores_less_than                         Dont recalibrate bases with quality scores less than this threshold (with -bqsr)
+#    quantizing_levels                                  number of distinct quality scores in the quantized output   
+#    sites_only_vcf_output                              If true, dont emit genotype fields when writing vcf file output.
+#    use_original_qualities                             Use the base quality scores from the OQ tag                 
+#
+#  Optional Common Arguments
+#    add_output_sam_program_record                      If true, adds a PG tag to created SAM/BAM/CRAM files.       
+#    add_output_vcf_command_line                        If true, adds a command line header line to created VCF files.
+#    create_output_bam_index                            If true, create a BAM/CRAM index when writing a coordinate-sorted BAM/CRAM file.
+#    create_output_bam_md5                              If true, create a MD5 digest for any BAM/SAM/CRAM file created
+#    create_output_variant_index                        If true, create a VCF index when writing a coordinate-sorted VCF file.
+#    create_output_variant_md5                          If true, create a a MD5 digest any VCF file created.        
+#    disable_read_filter                                Read filters to be disabled before analysis                 
+#    disable_tool_default_read_filters                  Disable all tool default read filters (WARNING: many tools will not function cor
+#    exclude_intervals                                  One or more genomic intervals to exclude from processing    
+#    gatk_config_file                                   A configuration file to use with the GATK.                  
+#    interval_exclusion_padding                         Amount of padding (in bp) to add to each interval you are excluding.
+#    interval_padding                                   Amount of padding (in bp) to add to each interval you are including.
+#    interval_set_rule                                  Set merging approach to use for combining interval inputs   
+#    lenient                                            Lenient processing of VCF files                             
+#    QUIET                                              Whether to suppress job-summary info on System.err.         
+#    read_filter                                        Read filters to be applied before analysis                  
+#    read_index                                         Indices to use for the read inputs. If specified, an index must be provided for 
+#    read_validation_stringency                         Validation stringency for all SAM/BAM/CRAM/SRA files read by this program.  The 
+#    seconds_between_progress_updates                   Output traversal statistics every time this many seconds elapse
+#    sequence_dictionary                                Use the given sequence dictionary as the master/canonical sequence dictionary.  
+#    tmp_dir                                            Temp directory to use.                                      
+#    use_jdk_deflater                                   Whether to use the JdkDeflater (as opposed to IntelDeflater)
+#    use_jdk_inflater                                   Whether to use the JdkInflater (as opposed to IntelInflater)
+#    verbosity                                          Control verbosity of logging.                               
+
+workflow BaseRecalibrator {
+
+  input {
+    #Docker to use
+    String dockerImage
+    #App location
+    String gatk
+    #Memory to use
+    String memoryRequirements
+    #Disk requirements for this workflow
+    String diskRequirements
+    #CPU requirements for this workflow
+    String cpuRequirements
+    #Preemptible requirements for this workflow
+    String preemptibleRequirements
+    #Boot disk size requirements for this workflow
+    String bootdisksizegbRequirements
+
+    # Required Arguments
+    Array[File] input_arg
+    Array[File]? inputIndex
+    Array[File] known_sites
+    String output_arg
+    File reference
+    File referenceIndex
+    File referenceDictionary
+
+    # Optional Tool Arguments
+    String? binary_tag_name
+    Float? bqsr_baq_gap_open_penalty
+    Int? cloud_index_prefetch_buffer
+    Int? cloud_prefetch_buffer
+    Int? default_base_qualities
+    Int? deletions_default_quality
+    Boolean? disable_bam_index_caching
+    Boolean? disable_sequence_dictionary_validation
+    Int? gcs_max_retries
+    String? gcs_project_for_requester_pays
+    Int? indels_context_size
+    Int? insertions_default_quality
+    String? interval_merging_rule
+    Array[String]? intervals
+    Int? low_quality_tail
+    Int? maximum_cycle_value
+    Int? mismatches_context_size
+    Int? mismatches_default_quality
+    Int? preserve_qscores_less_than
+    Int? quantizing_levels
+    Boolean? sites_only_vcf_output
+    Boolean? use_original_qualities
+
+    # Optional Common Arguments
+    Boolean? add_output_sam_program_record
+    Boolean? add_output_vcf_command_line
+    Boolean? create_output_bam_index
+    Boolean? create_output_bam_md5
+    Boolean? create_output_variant_index
+    Boolean? create_output_variant_md5
+    Array[String]? disable_read_filter
+    Boolean? disable_tool_default_read_filters
+    Array[String]? exclude_intervals
+    String? gatk_config_file
+    Int? interval_exclusion_padding
+    Int? interval_padding
+    String? interval_set_rule
+    Boolean? lenient
+    Boolean? QUIET
+    Array[String]? read_filter
+    Array[File]? read_index
+    String? read_validation_stringency
+    Float? seconds_between_progress_updates
+    String? sequence_dictionary
+    File? tmp_dir
+    Boolean? use_jdk_deflater
+    Boolean? use_jdk_inflater
+    String? verbosity
+
+  }
+
+  call BaseRecalibrator {
+
+    input:
+
+        #Docker
+        dockerImage                                        = dockerImage,
+        #App location
+        gatk                                               = gatk,
+        #Memory to use
+        memoryRequirements                                 = memoryRequirements,
+        #Disk requirements for this workflow
+        diskRequirements                                   = diskRequirements,
+        #CPU requirements for this workflow
+        cpuRequirements                                    = cpuRequirements,
+        #Preemptible requirements for this workflow
+        preemptibleRequirements                            = preemptibleRequirements,
+        #Boot disk size requirements for this workflow
+        bootdisksizegbRequirements                         = bootdisksizegbRequirements,
+
+
+        # Required Arguments
+        input_arg                                          = input_arg,
+        inputIndex                                         = inputIndex,
+        known_sites                                        = known_sites,
+        output_arg                                         = output_arg,
+        reference                                          = reference,
+        referenceIndex                                     = referenceIndex,
+        referenceDictionary                                = referenceDictionary,
+
+        # Optional Tool Arguments
+        binary_tag_name                                    = binary_tag_name,
+        bqsr_baq_gap_open_penalty                          = bqsr_baq_gap_open_penalty,
+        cloud_index_prefetch_buffer                        = cloud_index_prefetch_buffer,
+        cloud_prefetch_buffer                              = cloud_prefetch_buffer,
+        default_base_qualities                             = default_base_qualities,
+        deletions_default_quality                          = deletions_default_quality,
+        disable_bam_index_caching                          = disable_bam_index_caching,
+        disable_sequence_dictionary_validation             = disable_sequence_dictionary_validation,
+        gcs_max_retries                                    = gcs_max_retries,
+        gcs_project_for_requester_pays                     = gcs_project_for_requester_pays,
+        indels_context_size                                = indels_context_size,
+        insertions_default_quality                         = insertions_default_quality,
+        interval_merging_rule                              = interval_merging_rule,
+        intervals                                          = intervals,
+        low_quality_tail                                   = low_quality_tail,
+        maximum_cycle_value                                = maximum_cycle_value,
+        mismatches_context_size                            = mismatches_context_size,
+        mismatches_default_quality                         = mismatches_default_quality,
+        preserve_qscores_less_than                         = preserve_qscores_less_than,
+        quantizing_levels                                  = quantizing_levels,
+        sites_only_vcf_output                              = sites_only_vcf_output,
+        use_original_qualities                             = use_original_qualities,
+
+        # Optional Common Arguments
+        add_output_sam_program_record                      = add_output_sam_program_record,
+        add_output_vcf_command_line                        = add_output_vcf_command_line,
+        create_output_bam_index                            = create_output_bam_index,
+        create_output_bam_md5                              = create_output_bam_md5,
+        create_output_variant_index                        = create_output_variant_index,
+        create_output_variant_md5                          = create_output_variant_md5,
+        disable_read_filter                                = disable_read_filter,
+        disable_tool_default_read_filters                  = disable_tool_default_read_filters,
+        exclude_intervals                                  = exclude_intervals,
+        gatk_config_file                                   = gatk_config_file,
+        interval_exclusion_padding                         = interval_exclusion_padding,
+        interval_padding                                   = interval_padding,
+        interval_set_rule                                  = interval_set_rule,
+        lenient                                            = lenient,
+        QUIET                                              = QUIET,
+        read_filter                                        = read_filter,
+        read_index                                         = read_index,
+        read_validation_stringency                         = read_validation_stringency,
+        seconds_between_progress_updates                   = seconds_between_progress_updates,
+        sequence_dictionary                                = sequence_dictionary,
+        tmp_dir                                            = tmp_dir,
+        use_jdk_deflater                                   = use_jdk_deflater,
+        use_jdk_inflater                                   = use_jdk_inflater,
+        verbosity                                          = verbosity,
+
+  }
+
+  output {
+    # Workflow Outputs                                  
+    File BaseRecalibratoroutput_arg = BaseRecalibrator.BaseRecalibrator_output_arg
+  }
+
+  parameter_meta {
+    dockerImage: { description: "Docker image for this task" }
+    gatk: { description: "Location of gatk to run for this task" }
+    memoryRequirements: { description: "Runtime memory requirements for this task" }
+    diskRequirements: { description: "Runtime disk requirements for this task" }
+    cpuRequirements: { description: "Runtime CPU count for this task" }
+    preemptibleRequirements: { description: "Runtime preemptible count for this task" }
+    bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
+
+    # Required Arguments
+    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
+    inputIndex: { description: "Companion resource for input_arg" }
+    known_sites: { description: "One or more databases of known polymorphic sites used to exclude regions around " }
+    output_arg: { description: "The output recalibration table file to create" }
+    reference: { description: "Reference sequence file" }
+    referenceIndex: { description: "Companion resource for reference" }
+    referenceDictionary: { description: "Companion resource for reference" }
+
+    # Optional Tool Arguments
+    binary_tag_name: { description: "the binary tag covariate name if using it" }
+    bqsr_baq_gap_open_penalty: { description: "BQSR BAQ gap open penalty (Phred Scaled).  Default value is 40.  30 is perhaps b" }
+    cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
+    cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
+    default_base_qualities: { description: "Assign a default base quality" }
+    deletions_default_quality: { description: "default quality for the base deletions covariate" }
+    disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }
+    disable_sequence_dictionary_validation: { description: "If specified, do not check the sequence dictionaries from our inputs for compati" }
+    gcs_max_retries: { description: "If the GCS bucket channel errors out, how many times it will attempt to re-initi" }
+    gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
+    indels_context_size: { description: "Size of the k-mer context to be used for base insertions and deletions" }
+    insertions_default_quality: { description: "default quality for the base insertions covariate" }
+    interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
+    intervals: { description: "One or more genomic intervals over which to operate" }
+    low_quality_tail: { description: "minimum quality for the bases in the tail of the reads to be considered" }
+    maximum_cycle_value: { description: "The maximum cycle value permitted for the Cycle covariate" }
+    mismatches_context_size: { description: "Size of the k-mer context to be used for base mismatches" }
+    mismatches_default_quality: { description: "default quality for the base mismatches covariate" }
+    preserve_qscores_less_than: { description: "Dont recalibrate bases with quality scores less than this threshold (with -bqsr)" }
+    quantizing_levels: { description: "number of distinct quality scores in the quantized output" }
+    sites_only_vcf_output: { description: "If true, dont emit genotype fields when writing vcf file output." }
+    use_original_qualities: { description: "Use the base quality scores from the OQ tag" }
+
+    # Optional Common Arguments
+    add_output_sam_program_record: { description: "If true, adds a PG tag to created SAM/BAM/CRAM files." }
+    add_output_vcf_command_line: { description: "If true, adds a command line header line to created VCF files." }
+    create_output_bam_index: { description: "If true, create a BAM/CRAM index when writing a coordinate-sorted BAM/CRAM file." }
+    create_output_bam_md5: { description: "If true, create a MD5 digest for any BAM/SAM/CRAM file created" }
+    create_output_variant_index: { description: "If true, create a VCF index when writing a coordinate-sorted VCF file." }
+    create_output_variant_md5: { description: "If true, create a a MD5 digest any VCF file created." }
+    disable_read_filter: { description: "Read filters to be disabled before analysis" }
+    disable_tool_default_read_filters: { description: "Disable all tool default read filters (WARNING: many tools will not function cor" }
+    exclude_intervals: { description: "One or more genomic intervals to exclude from processing" }
+    gatk_config_file: { description: "A configuration file to use with the GATK." }
+    interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
+    interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
+    interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
+    lenient: { description: "Lenient processing of VCF files" }
+    QUIET: { description: "Whether to suppress job-summary info on System.err." }
+    read_filter: { description: "Read filters to be applied before analysis" }
+    read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }
+    read_validation_stringency: { description: "Validation stringency for all SAM/BAM/CRAM/SRA files read by this program.  The " }
+    seconds_between_progress_updates: { description: "Output traversal statistics every time this many seconds elapse" }
+    sequence_dictionary: { description: "Use the given sequence dictionary as the master/canonical sequence dictionary.  " }
+    tmp_dir: { description: "Temp directory to use." }
+    use_jdk_deflater: { description: "Whether to use the JdkDeflater (as opposed to IntelDeflater)" }
+    use_jdk_inflater: { description: "Whether to use the JdkInflater (as opposed to IntelInflater)" }
+    verbosity: { description: "Control verbosity of logging." }
+  }
+}
+
+task BaseRecalibrator {
+
+  input {
+    String dockerImage
+    String gatk
+    String memoryRequirements
+    String diskRequirements
+    String cpuRequirements
+    String preemptibleRequirements
+    String bootdisksizegbRequirements
+    Array[File] input_arg
+    Array[File]? inputIndex
+    Array[File] known_sites
+    String output_arg
+    File reference
+    File referenceIndex
+    File referenceDictionary
+    String? binary_tag_name
+    Float? bqsr_baq_gap_open_penalty
+    Int? cloud_index_prefetch_buffer
+    Int? cloud_prefetch_buffer
+    Int? default_base_qualities
+    Int? deletions_default_quality
+    Boolean? disable_bam_index_caching
+    Boolean? disable_sequence_dictionary_validation
+    Int? gcs_max_retries
+    String? gcs_project_for_requester_pays
+    Int? indels_context_size
+    Int? insertions_default_quality
+    String? interval_merging_rule
+    Array[String]? intervals
+    Int? low_quality_tail
+    Int? maximum_cycle_value
+    Int? mismatches_context_size
+    Int? mismatches_default_quality
+    Int? preserve_qscores_less_than
+    Int? quantizing_levels
+    Boolean? sites_only_vcf_output
+    Boolean? use_original_qualities
+    Boolean? add_output_sam_program_record
+    Boolean? add_output_vcf_command_line
+    Boolean? create_output_bam_index
+    Boolean? create_output_bam_md5
+    Boolean? create_output_variant_index
+    Boolean? create_output_variant_md5
+    Array[String]? disable_read_filter
+    Boolean? disable_tool_default_read_filters
+    Array[String]? exclude_intervals
+    String? gatk_config_file
+    Int? interval_exclusion_padding
+    Int? interval_padding
+    String? interval_set_rule
+    Boolean? lenient
+    Boolean? QUIET
+    Array[String]? read_filter
+    Array[File]? read_index
+    String? read_validation_stringency
+    Float? seconds_between_progress_updates
+    String? sequence_dictionary
+    File? tmp_dir
+    Boolean? use_jdk_deflater
+    Boolean? use_jdk_inflater
+    String? verbosity
+
+  }
+
+  command <<<
+    ~{gatk} BaseRecalibrator \
+    --input ~{sep=' --input ' input_arg} \
+    --known-sites ~{sep=' --known-sites ' known_sites} \
+    --output ~{sep=' --output ' output_arg} \
+    --reference ~{sep=' --reference ' reference} \
+    ~{true='--binary-tag-name ' false='' defined(binary_tag_name)}~{sep=' --binary-tag-name ' binary_tag_name} \
+    ~{true='--bqsr-baq-gap-open-penalty ' false='' defined(bqsr_baq_gap_open_penalty)}~{sep=' --bqsr-baq-gap-open-penalty ' bqsr_baq_gap_open_penalty} \
+    ~{true='--cloud-index-prefetch-buffer ' false='' defined(cloud_index_prefetch_buffer)}~{sep=' --cloud-index-prefetch-buffer ' cloud_index_prefetch_buffer} \
+    ~{true='--cloud-prefetch-buffer ' false='' defined(cloud_prefetch_buffer)}~{sep=' --cloud-prefetch-buffer ' cloud_prefetch_buffer} \
+    ~{true='--default-base-qualities ' false='' defined(default_base_qualities)}~{sep=' --default-base-qualities ' default_base_qualities} \
+    ~{true='--deletions-default-quality ' false='' defined(deletions_default_quality)}~{sep=' --deletions-default-quality ' deletions_default_quality} \
+    ~{true='--disable-bam-index-caching ' false='' defined(disable_bam_index_caching)}~{sep=' --disable-bam-index-caching ' disable_bam_index_caching} \
+    ~{true='--disable-sequence-dictionary-validation ' false='' defined(disable_sequence_dictionary_validation)}~{sep=' --disable-sequence-dictionary-validation ' disable_sequence_dictionary_validation} \
+    ~{true='--gcs-max-retries ' false='' defined(gcs_max_retries)}~{sep=' --gcs-max-retries ' gcs_max_retries} \
+    ~{true='--gcs-project-for-requester-pays ' false='' defined(gcs_project_for_requester_pays)}~{sep=' --gcs-project-for-requester-pays ' gcs_project_for_requester_pays} \
+    ~{true='--indels-context-size ' false='' defined(indels_context_size)}~{sep=' --indels-context-size ' indels_context_size} \
+    ~{true='--insertions-default-quality ' false='' defined(insertions_default_quality)}~{sep=' --insertions-default-quality ' insertions_default_quality} \
+    ~{true='--interval-merging-rule ' false='' defined(interval_merging_rule)}~{sep=' --interval-merging-rule ' interval_merging_rule} \
+    ~{true='--intervals ' false='' defined(intervals)}~{sep=' --intervals ' intervals} \
+    ~{true='--low-quality-tail ' false='' defined(low_quality_tail)}~{sep=' --low-quality-tail ' low_quality_tail} \
+    ~{true='--maximum-cycle-value ' false='' defined(maximum_cycle_value)}~{sep=' --maximum-cycle-value ' maximum_cycle_value} \
+    ~{true='--mismatches-context-size ' false='' defined(mismatches_context_size)}~{sep=' --mismatches-context-size ' mismatches_context_size} \
+    ~{true='--mismatches-default-quality ' false='' defined(mismatches_default_quality)}~{sep=' --mismatches-default-quality ' mismatches_default_quality} \
+    ~{true='--preserve-qscores-less-than ' false='' defined(preserve_qscores_less_than)}~{sep=' --preserve-qscores-less-than ' preserve_qscores_less_than} \
+    ~{true='--quantizing-levels ' false='' defined(quantizing_levels)}~{sep=' --quantizing-levels ' quantizing_levels} \
+    ~{true='--sites-only-vcf-output ' false='' defined(sites_only_vcf_output)}~{sep=' --sites-only-vcf-output ' sites_only_vcf_output} \
+    ~{true='--use-original-qualities ' false='' defined(use_original_qualities)}~{sep=' --use-original-qualities ' use_original_qualities} \
+    ~{true='--add-output-sam-program-record ' false='' defined(add_output_sam_program_record)}~{sep=' --add-output-sam-program-record ' add_output_sam_program_record} \
+    ~{true='--add-output-vcf-command-line ' false='' defined(add_output_vcf_command_line)}~{sep=' --add-output-vcf-command-line ' add_output_vcf_command_line} \
+    ~{true='--create-output-bam-index ' false='' defined(create_output_bam_index)}~{sep=' --create-output-bam-index ' create_output_bam_index} \
+    ~{true='--create-output-bam-md5 ' false='' defined(create_output_bam_md5)}~{sep=' --create-output-bam-md5 ' create_output_bam_md5} \
+    ~{true='--create-output-variant-index ' false='' defined(create_output_variant_index)}~{sep=' --create-output-variant-index ' create_output_variant_index} \
+    ~{true='--create-output-variant-md5 ' false='' defined(create_output_variant_md5)}~{sep=' --create-output-variant-md5 ' create_output_variant_md5} \
+    ~{true='--disable-read-filter ' false='' defined(disable_read_filter)}~{sep=' --disable-read-filter ' disable_read_filter} \
+    ~{true='--disable-tool-default-read-filters ' false='' defined(disable_tool_default_read_filters)}~{sep=' --disable-tool-default-read-filters ' disable_tool_default_read_filters} \
+    ~{true='--exclude-intervals ' false='' defined(exclude_intervals)}~{sep=' --exclude-intervals ' exclude_intervals} \
+    ~{true='--gatk-config-file ' false='' defined(gatk_config_file)}~{sep=' --gatk-config-file ' gatk_config_file} \
+    ~{true='--interval-exclusion-padding ' false='' defined(interval_exclusion_padding)}~{sep=' --interval-exclusion-padding ' interval_exclusion_padding} \
+    ~{true='--interval-padding ' false='' defined(interval_padding)}~{sep=' --interval-padding ' interval_padding} \
+    ~{true='--interval-set-rule ' false='' defined(interval_set_rule)}~{sep=' --interval-set-rule ' interval_set_rule} \
+    ~{true='--lenient ' false='' defined(lenient)}~{sep=' --lenient ' lenient} \
+    ~{true='--QUIET ' false='' defined(QUIET)}~{sep=' --QUIET ' QUIET} \
+    ~{true='--read-filter ' false='' defined(read_filter)}~{sep=' --read-filter ' read_filter} \
+    ~{true='--read-index ' false='' defined(read_index)}~{sep=' --read-index ' read_index} \
+    ~{true='--read-validation-stringency ' false='' defined(read_validation_stringency)}~{sep=' --read-validation-stringency ' read_validation_stringency} \
+    ~{true='--seconds-between-progress-updates ' false='' defined(seconds_between_progress_updates)}~{sep=' --seconds-between-progress-updates ' seconds_between_progress_updates} \
+    ~{true='--sequence-dictionary ' false='' defined(sequence_dictionary)}~{sep=' --sequence-dictionary ' sequence_dictionary} \
+    ~{true='--tmp-dir ' false='' defined(tmp_dir)}~{sep=' --tmp-dir ' tmp_dir} \
+    ~{true='--use-jdk-deflater ' false='' defined(use_jdk_deflater)}~{sep=' --use-jdk-deflater ' use_jdk_deflater} \
+    ~{true='--use-jdk-inflater ' false='' defined(use_jdk_inflater)}~{sep=' --use-jdk-inflater ' use_jdk_inflater} \
+    ~{true='--verbosity ' false='' defined(verbosity)}~{sep=' --verbosity ' verbosity} \
+
+  >>>
+
+  runtime {
+      docker: dockerImage
+      memory: memoryRequirements
+      disks: diskRequirements
+      cpu: cpuRequirements
+      preemptible: preemptibleRequirements
+      bootDiskSizeGb: bootdisksizegbRequirements
+  }
+
+  output {
+    # Task Outputs                                      
+    File BaseRecalibrator_output_arg = output_arg
+  }
+
+  parameter_meta {
+    dockerImage: { description: "Docker image for this task" }
+    gatk: { description: "Location of gatk to run for this task" }
+    memoryRequirements: { description: "Runtime memory requirements for this task" }
+    diskRequirements: { description: "Runtime disk requirements for this task" }
+    cpuRequirements: { description: "Runtime CPU count for this task" }
+    preemptibleRequirements: { description: "Runtime preemptible count for this task" }
+    bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
+
+    # Required Arguments
+    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
+    inputIndex: { description: "Companion resource for input_arg" }
+    known_sites: { description: "One or more databases of known polymorphic sites used to exclude regions around " }
+    output_arg: { description: "The output recalibration table file to create" }
+    reference: { description: "Reference sequence file" }
+    referenceIndex: { description: "Companion resource for reference" }
+    referenceDictionary: { description: "Companion resource for reference" }
+
+    # Optional Tool Arguments
+    binary_tag_name: { description: "the binary tag covariate name if using it" }
+    bqsr_baq_gap_open_penalty: { description: "BQSR BAQ gap open penalty (Phred Scaled).  Default value is 40.  30 is perhaps b" }
+    cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
+    cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
+    default_base_qualities: { description: "Assign a default base quality" }
+    deletions_default_quality: { description: "default quality for the base deletions covariate" }
+    disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }
+    disable_sequence_dictionary_validation: { description: "If specified, do not check the sequence dictionaries from our inputs for compati" }
+    gcs_max_retries: { description: "If the GCS bucket channel errors out, how many times it will attempt to re-initi" }
+    gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
+    indels_context_size: { description: "Size of the k-mer context to be used for base insertions and deletions" }
+    insertions_default_quality: { description: "default quality for the base insertions covariate" }
+    interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
+    intervals: { description: "One or more genomic intervals over which to operate" }
+    low_quality_tail: { description: "minimum quality for the bases in the tail of the reads to be considered" }
+    maximum_cycle_value: { description: "The maximum cycle value permitted for the Cycle covariate" }
+    mismatches_context_size: { description: "Size of the k-mer context to be used for base mismatches" }
+    mismatches_default_quality: { description: "default quality for the base mismatches covariate" }
+    preserve_qscores_less_than: { description: "Dont recalibrate bases with quality scores less than this threshold (with -bqsr)" }
+    quantizing_levels: { description: "number of distinct quality scores in the quantized output" }
+    sites_only_vcf_output: { description: "If true, dont emit genotype fields when writing vcf file output." }
+    use_original_qualities: { description: "Use the base quality scores from the OQ tag" }
+
+    # Optional Common Arguments
+    add_output_sam_program_record: { description: "If true, adds a PG tag to created SAM/BAM/CRAM files." }
+    add_output_vcf_command_line: { description: "If true, adds a command line header line to created VCF files." }
+    create_output_bam_index: { description: "If true, create a BAM/CRAM index when writing a coordinate-sorted BAM/CRAM file." }
+    create_output_bam_md5: { description: "If true, create a MD5 digest for any BAM/SAM/CRAM file created" }
+    create_output_variant_index: { description: "If true, create a VCF index when writing a coordinate-sorted VCF file." }
+    create_output_variant_md5: { description: "If true, create a a MD5 digest any VCF file created." }
+    disable_read_filter: { description: "Read filters to be disabled before analysis" }
+    disable_tool_default_read_filters: { description: "Disable all tool default read filters (WARNING: many tools will not function cor" }
+    exclude_intervals: { description: "One or more genomic intervals to exclude from processing" }
+    gatk_config_file: { description: "A configuration file to use with the GATK." }
+    interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
+    interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
+    interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
+    lenient: { description: "Lenient processing of VCF files" }
+    QUIET: { description: "Whether to suppress job-summary info on System.err." }
+    read_filter: { description: "Read filters to be applied before analysis" }
+    read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }
+    read_validation_stringency: { description: "Validation stringency for all SAM/BAM/CRAM/SRA files read by this program.  The " }
+    seconds_between_progress_updates: { description: "Output traversal statistics every time this many seconds elapse" }
+    sequence_dictionary: { description: "Use the given sequence dictionary as the master/canonical sequence dictionary.  " }
+    tmp_dir: { description: "Temp directory to use." }
+    use_jdk_deflater: { description: "Whether to use the JdkDeflater (as opposed to IntelDeflater)" }
+    use_jdk_inflater: { description: "Whether to use the JdkInflater (as opposed to IntelInflater)" }
+    verbosity: { description: "Control verbosity of logging." }
+  }
+}
+

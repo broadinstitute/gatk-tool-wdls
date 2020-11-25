@@ -1,0 +1,12 @@
+{
+  "FlagStat.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "FlagStat.gatk": "gatk",
+  "FlagStat.memoryRequirements": "4G",
+  "FlagStat.diskRequirements": "local-disk 40 HDD",
+  "FlagStat.cpuRequirements": "2",
+  "FlagStat.preemptibleRequirements": "3",
+  "FlagStat.bootdisksizegbRequirements": "15",
+
+  "FlagStat.inputIndex": "Array[File]",
+  "FlagStat.input_arg": "Array[File]"
+}

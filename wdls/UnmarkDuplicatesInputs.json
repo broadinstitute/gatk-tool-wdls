@@ -1,0 +1,14 @@
+{
+  "UnmarkDuplicates.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "UnmarkDuplicates.gatk": "gatk",
+  "UnmarkDuplicates.memoryRequirements": "4G",
+  "UnmarkDuplicates.diskRequirements": "local-disk 40 HDD",
+  "UnmarkDuplicates.cpuRequirements": "2",
+  "UnmarkDuplicates.preemptibleRequirements": "3",
+  "UnmarkDuplicates.bootdisksizegbRequirements": "15",
+
+  "UnmarkDuplicates.inputIndex": "Array[File]",
+  "UnmarkDuplicates.input_arg": "Array[File]",
+  "UnmarkDuplicates.outputIndex": "String",
+  "UnmarkDuplicates.output_arg": "String"
+}

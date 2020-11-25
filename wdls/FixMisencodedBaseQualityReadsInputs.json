@@ -1,0 +1,14 @@
+{
+  "FixMisencodedBaseQualityReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "FixMisencodedBaseQualityReads.gatk": "gatk",
+  "FixMisencodedBaseQualityReads.memoryRequirements": "4G",
+  "FixMisencodedBaseQualityReads.diskRequirements": "local-disk 40 HDD",
+  "FixMisencodedBaseQualityReads.cpuRequirements": "2",
+  "FixMisencodedBaseQualityReads.preemptibleRequirements": "3",
+  "FixMisencodedBaseQualityReads.bootdisksizegbRequirements": "15",
+
+  "FixMisencodedBaseQualityReads.inputIndex": "Array[File]",
+  "FixMisencodedBaseQualityReads.input_arg": "Array[File]",
+  "FixMisencodedBaseQualityReads.outputIndex": "String",
+  "FixMisencodedBaseQualityReads.output_arg": "String"
+}

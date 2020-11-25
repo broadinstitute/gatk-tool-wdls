@@ -1,0 +1,14 @@
+{
+  "PrintReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "PrintReads.gatk": "gatk",
+  "PrintReads.memoryRequirements": "4G",
+  "PrintReads.diskRequirements": "local-disk 40 HDD",
+  "PrintReads.cpuRequirements": "2",
+  "PrintReads.preemptibleRequirements": "3",
+  "PrintReads.bootdisksizegbRequirements": "15",
+
+  "PrintReads.inputIndex": "Array[File]",
+  "PrintReads.input_arg": "Array[File]",
+  "PrintReads.outputIndex": "String",
+  "PrintReads.output_arg": "String"
+}

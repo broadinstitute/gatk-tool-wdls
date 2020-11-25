@@ -1,0 +1,17 @@
+{
+  "BaseRecalibrator.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "BaseRecalibrator.gatk": "gatk",
+  "BaseRecalibrator.memoryRequirements": "4G",
+  "BaseRecalibrator.diskRequirements": "local-disk 40 HDD",
+  "BaseRecalibrator.cpuRequirements": "2",
+  "BaseRecalibrator.preemptibleRequirements": "3",
+  "BaseRecalibrator.bootdisksizegbRequirements": "15",
+
+  "BaseRecalibrator.inputIndex": "Array[File]",
+  "BaseRecalibrator.input_arg": "Array[File]",
+  "BaseRecalibrator.known_sites": "Array[File]",
+  "BaseRecalibrator.output_arg": "String",
+  "BaseRecalibrator.referenceIndex": "File",
+  "BaseRecalibrator.referenceDictionary": "File",
+  "BaseRecalibrator.reference": "File"
+}

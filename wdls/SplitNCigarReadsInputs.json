@@ -1,0 +1,17 @@
+{
+  "SplitNCigarReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "SplitNCigarReads.gatk": "gatk",
+  "SplitNCigarReads.memoryRequirements": "4G",
+  "SplitNCigarReads.diskRequirements": "local-disk 40 HDD",
+  "SplitNCigarReads.cpuRequirements": "2",
+  "SplitNCigarReads.preemptibleRequirements": "3",
+  "SplitNCigarReads.bootdisksizegbRequirements": "15",
+
+  "SplitNCigarReads.inputIndex": "Array[File]",
+  "SplitNCigarReads.input_arg": "Array[File]",
+  "SplitNCigarReads.outputIndex": "String",
+  "SplitNCigarReads.output_arg": "String",
+  "SplitNCigarReads.referenceIndex": "File",
+  "SplitNCigarReads.referenceDictionary": "File",
+  "SplitNCigarReads.reference": "File"
+}

@@ -1,0 +1,12 @@
+{
+  "CountReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "CountReads.gatk": "gatk",
+  "CountReads.memoryRequirements": "4G",
+  "CountReads.diskRequirements": "local-disk 40 HDD",
+  "CountReads.cpuRequirements": "2",
+  "CountReads.preemptibleRequirements": "3",
+  "CountReads.bootdisksizegbRequirements": "15",
+
+  "CountReads.inputIndex": "Array[File]",
+  "CountReads.input_arg": "Array[File]"
+}

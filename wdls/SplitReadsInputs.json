@@ -1,0 +1,13 @@
+{
+  "SplitReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "SplitReads.gatk": "gatk",
+  "SplitReads.memoryRequirements": "4G",
+  "SplitReads.diskRequirements": "local-disk 40 HDD",
+  "SplitReads.cpuRequirements": "2",
+  "SplitReads.preemptibleRequirements": "3",
+  "SplitReads.bootdisksizegbRequirements": "15",
+
+  "SplitReads.inputIndex": "Array[File]",
+  "SplitReads.input_arg": "Array[File]",
+  "SplitReads.output_arg": "String"
+}

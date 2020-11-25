@@ -1,0 +1,17 @@
+{
+  "ReadAnonymizer.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "ReadAnonymizer.gatk": "gatk",
+  "ReadAnonymizer.memoryRequirements": "4G",
+  "ReadAnonymizer.diskRequirements": "local-disk 40 HDD",
+  "ReadAnonymizer.cpuRequirements": "2",
+  "ReadAnonymizer.preemptibleRequirements": "3",
+  "ReadAnonymizer.bootdisksizegbRequirements": "15",
+
+  "ReadAnonymizer.inputIndex": "Array[File]",
+  "ReadAnonymizer.input_arg": "Array[File]",
+  "ReadAnonymizer.outputIndex": "String",
+  "ReadAnonymizer.output_arg": "String",
+  "ReadAnonymizer.referenceIndex": "File",
+  "ReadAnonymizer.referenceDictionary": "File",
+  "ReadAnonymizer.reference": "File"
+}

@@ -1,0 +1,15 @@
+{
+  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "ApplyBQSR.gatk": "gatk",
+  "ApplyBQSR.memoryRequirements": "4G",
+  "ApplyBQSR.diskRequirements": "local-disk 40 HDD",
+  "ApplyBQSR.cpuRequirements": "2",
+  "ApplyBQSR.preemptibleRequirements": "3",
+  "ApplyBQSR.bootdisksizegbRequirements": "15",
+
+  "ApplyBQSR.bqsr_recal_file": "File",
+  "ApplyBQSR.inputIndex": "Array[File]",
+  "ApplyBQSR.input_arg": "Array[File]",
+  "ApplyBQSR.outputIndex": "String",
+  "ApplyBQSR.output_arg": "String"
+}

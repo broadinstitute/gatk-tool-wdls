@@ -1,0 +1,17 @@
+{
+  "LeftAlignIndels.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "LeftAlignIndels.gatk": "gatk",
+  "LeftAlignIndels.memoryRequirements": "4G",
+  "LeftAlignIndels.diskRequirements": "local-disk 40 HDD",
+  "LeftAlignIndels.cpuRequirements": "2",
+  "LeftAlignIndels.preemptibleRequirements": "3",
+  "LeftAlignIndels.bootdisksizegbRequirements": "15",
+
+  "LeftAlignIndels.inputIndex": "Array[File]",
+  "LeftAlignIndels.input_arg": "Array[File]",
+  "LeftAlignIndels.outputIndex": "String",
+  "LeftAlignIndels.output_arg": "String",
+  "LeftAlignIndels.referenceIndex": "File",
+  "LeftAlignIndels.referenceDictionary": "File",
+  "LeftAlignIndels.reference": "File"
+}

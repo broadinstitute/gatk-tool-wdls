@@ -1,0 +1,14 @@
+{
+  "ClipReads.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "ClipReads.gatk": "gatk",
+  "ClipReads.memoryRequirements": "4G",
+  "ClipReads.diskRequirements": "local-disk 40 HDD",
+  "ClipReads.cpuRequirements": "2",
+  "ClipReads.preemptibleRequirements": "3",
+  "ClipReads.bootdisksizegbRequirements": "15",
+
+  "ClipReads.inputIndex": "Array[File]",
+  "ClipReads.input_arg": "Array[File]",
+  "ClipReads.outputIndex": "String",
+  "ClipReads.output_arg": "String"
+}

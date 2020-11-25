@@ -1,0 +1,16 @@
+{
+  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "CombineGVCFs.gatk": "gatk",
+  "CombineGVCFs.memoryRequirements": "4G",
+  "CombineGVCFs.diskRequirements": "local-disk 40 HDD",
+  "CombineGVCFs.cpuRequirements": "2",
+  "CombineGVCFs.preemptibleRequirements": "3",
+  "CombineGVCFs.bootdisksizegbRequirements": "15",
+
+  "CombineGVCFs.outputIndex": "String",
+  "CombineGVCFs.output_arg": "String",
+  "CombineGVCFs.referenceIndex": "File",
+  "CombineGVCFs.referenceDictionary": "File",
+  "CombineGVCFs.reference": "File",
+  "CombineGVCFs.variant": "Array[String]"
+}

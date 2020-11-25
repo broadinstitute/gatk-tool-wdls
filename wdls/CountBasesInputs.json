@@ -1,0 +1,12 @@
+{
+  "CountBases.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "CountBases.gatk": "gatk",
+  "CountBases.memoryRequirements": "4G",
+  "CountBases.diskRequirements": "local-disk 40 HDD",
+  "CountBases.cpuRequirements": "2",
+  "CountBases.preemptibleRequirements": "3",
+  "CountBases.bootdisksizegbRequirements": "15",
+
+  "CountBases.inputIndex": "Array[File]",
+  "CountBases.input_arg": "Array[File]"
+}
