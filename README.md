@@ -11,3 +11,6 @@ Each set of WDLs published here is tagged with the GATK release version that the
 of the WDLs with the version of GATK that you are running.
 
 A `.dockstore.yml` file is also provided for integration with [Dockstore](dockstore.org)
+
+**Note:** Only those GATK tools that have been annotated for WDL generation will have WDLs in this repository. Over time, we will annotate
+additional GATK tools for WDL generation, and they will show up here with each new GATK release.
