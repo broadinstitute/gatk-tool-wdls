@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -46,7 +46,7 @@ workflow CombineGVCFs {
     File reference
     File referenceIndex
     File referenceDictionary
-    Array[String] variant
+    Array[File] variant
 
   }
 
@@ -120,7 +120,7 @@ task CombineGVCFs {
     File reference
     File referenceIndex
     File referenceDictionary
-    Array[String] variant
+    Array[File] variant
 
   }
 

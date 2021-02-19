@@ -1,6 +1,6 @@
 version 1.0
 
-# Run UnmarkDuplicates (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run UnmarkDuplicates (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Clears the 0x400 duplicate SAM flag
 #
@@ -117,7 +117,7 @@ workflow UnmarkDuplicates {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -301,7 +301,7 @@ task UnmarkDuplicates {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater

@@ -1,5 +1,5 @@
 {
-  "FlagStat.dockerImage": "broadinstitute/gatk:4.1.9.0-SNAPSHOT",
+  "FlagStat.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
   "FlagStat.gatk": "gatk",
   "FlagStat.memoryRequirements": "4G",
   "FlagStat.diskRequirements": "local-disk 40 HDD",
@@ -18,6 +18,7 @@
   "FlagStat.gcs_project_for_requester_pays":null,
   "FlagStat.interval_merging_rule":"ALL",
   "FlagStat.intervals":null,
+  "FlagStat.output_arg":null,
   "FlagStat.referenceIndex": null,
   "FlagStat.referenceDictionary": null,
   "FlagStat.reference":null,

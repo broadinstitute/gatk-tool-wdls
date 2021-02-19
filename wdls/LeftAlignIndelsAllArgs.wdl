@@ -1,6 +1,6 @@
 version 1.0
 
-# Run LeftAlignIndels (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run LeftAlignIndels (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Left-aligns indels from reads in a SAM/BAM/CRAM file
 #
@@ -117,7 +117,7 @@ workflow LeftAlignIndels {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -301,7 +301,7 @@ task LeftAlignIndels {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater

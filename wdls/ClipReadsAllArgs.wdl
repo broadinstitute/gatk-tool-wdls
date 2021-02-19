@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ClipReads (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run ClipReads (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Clip reads in a SAM/BAM/CRAM file
 #
@@ -93,7 +93,7 @@ workflow ClipReads {
     # Optional Tool Arguments
     String? clip_representation
     Array[String]? clip_sequence
-    String? clip_sequences_file
+    File? clip_sequences_file
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     String? cycles_to_trim
@@ -131,7 +131,7 @@ workflow ClipReads {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -301,7 +301,7 @@ task ClipReads {
     String? outputIndex
     String? clip_representation
     Array[String]? clip_sequence
-    String? clip_sequences_file
+    File? clip_sequences_file
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     String? cycles_to_trim
@@ -337,7 +337,7 @@ task ClipReads {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater

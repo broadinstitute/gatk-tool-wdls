@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -94,7 +94,7 @@ workflow CombineGVCFs {
     File reference
     File referenceIndex
     File referenceDictionary
-    Array[String] variant
+    Array[File] variant
 
     # Optional Tool Arguments
     Array[String]? annotation
@@ -139,7 +139,7 @@ workflow CombineGVCFs {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -315,7 +315,7 @@ task CombineGVCFs {
     File reference
     File referenceIndex
     File referenceDictionary
-    Array[String] variant
+    Array[File] variant
     Array[String]? annotation
     Array[String]? annotation_group
     Array[String]? annotations_to_exclude
@@ -356,7 +356,7 @@ task CombineGVCFs {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater

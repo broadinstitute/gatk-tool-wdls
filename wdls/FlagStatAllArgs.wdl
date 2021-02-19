@@ -1,6 +1,6 @@
 version 1.0
 
-# Run FlagStat (WDL auto generated from GATK Version 4.1.9.0-SNAPSHOT)
+# Run FlagStat (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
 #
 # Accumulate flag statistics given a BAM file
 #
@@ -26,6 +26,7 @@ version 1.0
 #    gcs_project_for_requester_pays                     Project to bill when accessing requester pays buckets. If unset, these buckets c
 #    interval_merging_rule                              Interval merging rule for abutting intervals                
 #    intervals                                          One or more genomic intervals over which to operate         
+#    output_arg                                         Optional output file                                        
 #    reference                                          Reference sequence                                          
 #    referenceIndex                                     Optional Companion resource for reference                            
 #    referenceDictionary                                Optional Companion resource for reference                            
@@ -88,6 +89,7 @@ workflow FlagStat {
     String? gcs_project_for_requester_pays
     String? interval_merging_rule
     Array[String]? intervals
+    File? output_arg
     File? reference
     File? referenceIndex
     File? referenceDictionary
@@ -113,7 +115,7 @@ workflow FlagStat {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -154,6 +156,7 @@ workflow FlagStat {
         gcs_project_for_requester_pays                     = gcs_project_for_requester_pays,
         interval_merging_rule                              = interval_merging_rule,
         intervals                                          = intervals,
+        output_arg                                         = output_arg,
         reference                                          = reference,
         referenceIndex                                     = referenceIndex,
         referenceDictionary                                = referenceDictionary,
@@ -214,6 +217,7 @@ workflow FlagStat {
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
     interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
     intervals: { description: "One or more genomic intervals over which to operate" }
+    output_arg: { description: "Optional output file" }
     reference: { description: "Reference sequence" }
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
@@ -267,6 +271,7 @@ task FlagStat {
     String? gcs_project_for_requester_pays
     String? interval_merging_rule
     Array[String]? intervals
+    File? output_arg
     File? reference
     File? referenceIndex
     File? referenceDictionary
@@ -290,7 +295,7 @@ task FlagStat {
     Array[File]? read_index
     String? read_validation_stringency
     Float? seconds_between_progress_updates
-    String? sequence_dictionary
+    File? sequence_dictionary
     File? tmp_dir
     Boolean? use_jdk_deflater
     Boolean? use_jdk_inflater
@@ -309,6 +314,7 @@ task FlagStat {
     ~{true='--gcs-project-for-requester-pays ' false='' defined(gcs_project_for_requester_pays)}~{sep=' --gcs-project-for-requester-pays ' gcs_project_for_requester_pays} \
     ~{true='--interval-merging-rule ' false='' defined(interval_merging_rule)}~{sep=' --interval-merging-rule ' interval_merging_rule} \
     ~{true='--intervals ' false='' defined(intervals)}~{sep=' --intervals ' intervals} \
+    ~{true='--output ' false='' defined(output_arg)}~{sep=' --output ' output_arg} \
     ~{true='--reference ' false='' defined(reference)}~{sep=' --reference ' reference} \
     ~{true='--sites-only-vcf-output ' false='' defined(sites_only_vcf_output)}~{sep=' --sites-only-vcf-output ' sites_only_vcf_output} \
     ~{true='--add-output-sam-program-record ' false='' defined(add_output_sam_program_record)}~{sep=' --add-output-sam-program-record ' add_output_sam_program_record} \
@@ -374,6 +380,7 @@ task FlagStat {
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
     interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
     intervals: { description: "One or more genomic intervals over which to operate" }
+    output_arg: { description: "Optional output file" }
     reference: { description: "Reference sequence" }
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
