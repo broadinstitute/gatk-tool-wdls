@@ -1,5 +1,5 @@
 {
-  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "ApplyBQSR.gatk": "gatk",
   "ApplyBQSR.memoryRequirements": "4G",
   "ApplyBQSR.diskRequirements": "local-disk 40 HDD",

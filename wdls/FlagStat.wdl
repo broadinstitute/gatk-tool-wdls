@@ -1,6 +1,6 @@
 version 1.0
 
-# Run FlagStat (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
+# Run FlagStat (WDL auto generated from GATK Version 4.2.1.0-SNAPSHOT)
 #
 # Accumulate flag statistics given a BAM file
 #

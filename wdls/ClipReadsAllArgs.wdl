@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ClipReads (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
+# Run ClipReads (WDL auto generated from GATK Version 4.2.1.0-SNAPSHOT)
 #
 # Clip reads in a SAM/BAM/CRAM file
 #
@@ -55,6 +55,7 @@ version 1.0
 #    interval_padding                                   Amount of padding (in bp) to add to each interval you are including.
 #    interval_set_rule                                  Set merging approach to use for combining interval inputs   
 #    lenient                                            Lenient processing of VCF files                             
+#    max_variants_per_shard                             If non-zero, partitions VCF output into shards, each containing up to the given 
 #    QUIET                                              Whether to suppress job-summary info on System.err.         
 #    read_filter                                        Read filters to be applied before analysis                  
 #    read_index                                         Indices to use for the read inputs. If specified, an index must be provided for 
@@ -126,6 +127,7 @@ workflow ClipReads {
     Int? interval_padding
     String? interval_set_rule
     Boolean? lenient
+    Int? max_variants_per_shard
     Boolean? QUIET
     Array[String]? read_filter
     Array[File]? read_index
@@ -201,6 +203,7 @@ workflow ClipReads {
         interval_padding                                   = interval_padding,
         interval_set_rule                                  = interval_set_rule,
         lenient                                            = lenient,
+        max_variants_per_shard                             = max_variants_per_shard,
         QUIET                                              = QUIET,
         read_filter                                        = read_filter,
         read_index                                         = read_index,
@@ -272,6 +275,7 @@ workflow ClipReads {
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
     lenient: { description: "Lenient processing of VCF files" }
+    max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }
     read_filter: { description: "Read filters to be applied before analysis" }
     read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }
@@ -332,6 +336,7 @@ task ClipReads {
     Int? interval_padding
     String? interval_set_rule
     Boolean? lenient
+    Int? max_variants_per_shard
     Boolean? QUIET
     Array[String]? read_filter
     Array[File]? read_index
@@ -380,6 +385,7 @@ task ClipReads {
     ~{true='--interval-padding ' false='' defined(interval_padding)}~{sep=' --interval-padding ' interval_padding} \
     ~{true='--interval-set-rule ' false='' defined(interval_set_rule)}~{sep=' --interval-set-rule ' interval_set_rule} \
     ~{true='--lenient ' false='' defined(lenient)}~{sep=' --lenient ' lenient} \
+    ~{true='--max-variants-per-shard ' false='' defined(max_variants_per_shard)}~{sep=' --max-variants-per-shard ' max_variants_per_shard} \
     ~{true='--QUIET ' false='' defined(QUIET)}~{sep=' --QUIET ' QUIET} \
     ~{true='--read-filter ' false='' defined(read_filter)}~{sep=' --read-filter ' read_filter} \
     ~{true='--read-index ' false='' defined(read_index)}~{sep=' --read-index ' read_index} \
@@ -460,6 +466,7 @@ task ClipReads {
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
     lenient: { description: "Lenient processing of VCF files" }
+    max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }
     read_filter: { description: "Read filters to be applied before analysis" }
     read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }

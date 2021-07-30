@@ -1,6 +1,6 @@
 version 1.0
 
-# Run GatherTranches (**BETA**) (WDL auto generated from GATK Version 4.2.0.0-SNAPSHOT)
+# Run GatherTranches (**BETA**) (WDL auto generated from GATK Version 4.2.1.0-SNAPSHOT)
 #
 # Gathers scattered VQSLOD tranches into a single file
 #

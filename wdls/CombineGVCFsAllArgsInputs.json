@@ -1,5 +1,5 @@
 {
-  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "CombineGVCFs.gatk": "gatk",
   "CombineGVCFs.memoryRequirements": "4G",
   "CombineGVCFs.diskRequirements": "local-disk 40 HDD",
@@ -50,6 +50,7 @@
   "CombineGVCFs.interval_padding":0,
   "CombineGVCFs.interval_set_rule":"UNION",
   "CombineGVCFs.lenient":false,
+  "CombineGVCFs.max_variants_per_shard":0,
   "CombineGVCFs.QUIET":false,
   "CombineGVCFs.read_filter":null,
   "CombineGVCFs.read_index":null,

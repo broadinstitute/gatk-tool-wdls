@@ -1,5 +1,5 @@
 {
-  "SplitNCigarReads.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "SplitNCigarReads.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "SplitNCigarReads.gatk": "gatk",
   "SplitNCigarReads.memoryRequirements": "4G",
   "SplitNCigarReads.diskRequirements": "local-disk 40 HDD",
@@ -45,6 +45,7 @@
   "SplitNCigarReads.interval_padding":0,
   "SplitNCigarReads.interval_set_rule":"UNION",
   "SplitNCigarReads.lenient":false,
+  "SplitNCigarReads.max_variants_per_shard":0,
   "SplitNCigarReads.QUIET":false,
   "SplitNCigarReads.read_filter":null,
   "SplitNCigarReads.read_index":null,

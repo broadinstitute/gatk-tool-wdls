@@ -1,5 +1,5 @@
 {
-  "ReadAnonymizer.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "ReadAnonymizer.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "ReadAnonymizer.gatk": "gatk",
   "ReadAnonymizer.memoryRequirements": "4G",
   "ReadAnonymizer.diskRequirements": "local-disk 40 HDD",
@@ -41,6 +41,7 @@
   "ReadAnonymizer.interval_padding":0,
   "ReadAnonymizer.interval_set_rule":"UNION",
   "ReadAnonymizer.lenient":false,
+  "ReadAnonymizer.max_variants_per_shard":0,
   "ReadAnonymizer.QUIET":false,
   "ReadAnonymizer.read_filter":null,
   "ReadAnonymizer.read_index":null,

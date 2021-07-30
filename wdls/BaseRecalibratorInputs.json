@@ -1,5 +1,5 @@
 {
-  "BaseRecalibrator.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "BaseRecalibrator.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "BaseRecalibrator.gatk": "gatk",
   "BaseRecalibrator.memoryRequirements": "4G",
   "BaseRecalibrator.diskRequirements": "local-disk 40 HDD",

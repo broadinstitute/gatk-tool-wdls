@@ -1,5 +1,5 @@
 {
-  "SplitReads.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "SplitReads.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "SplitReads.gatk": "gatk",
   "SplitReads.memoryRequirements": "4G",
   "SplitReads.diskRequirements": "local-disk 40 HDD",
@@ -41,6 +41,7 @@
   "SplitReads.interval_padding":0,
   "SplitReads.interval_set_rule":"UNION",
   "SplitReads.lenient":false,
+  "SplitReads.max_variants_per_shard":0,
   "SplitReads.QUIET":false,
   "SplitReads.read_filter":null,
   "SplitReads.read_index":null,

@@ -1,5 +1,5 @@
 {
-  "PrintReads.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "PrintReads.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "PrintReads.gatk": "gatk",
   "PrintReads.memoryRequirements": "4G",
   "PrintReads.diskRequirements": "local-disk 40 HDD",

@@ -1,5 +1,5 @@
 {
-  "RevertBaseQualityScores.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "RevertBaseQualityScores.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "RevertBaseQualityScores.gatk": "gatk",
   "RevertBaseQualityScores.memoryRequirements": "4G",
   "RevertBaseQualityScores.diskRequirements": "local-disk 40 HDD",
@@ -39,6 +39,7 @@
   "RevertBaseQualityScores.interval_padding":0,
   "RevertBaseQualityScores.interval_set_rule":"UNION",
   "RevertBaseQualityScores.lenient":false,
+  "RevertBaseQualityScores.max_variants_per_shard":0,
   "RevertBaseQualityScores.QUIET":false,
   "RevertBaseQualityScores.read_filter":null,
   "RevertBaseQualityScores.read_index":null,

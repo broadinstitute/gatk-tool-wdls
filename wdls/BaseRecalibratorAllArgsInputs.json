@@ -1,5 +1,5 @@
 {
-  "BaseRecalibrator.dockerImage": "broadinstitute/gatk:4.2.0.0-SNAPSHOT",
+  "BaseRecalibrator.dockerImage": "broadinstitute/gatk:4.2.1.0-SNAPSHOT",
   "BaseRecalibrator.gatk": "gatk",
   "BaseRecalibrator.memoryRequirements": "4G",
   "BaseRecalibrator.diskRequirements": "local-disk 40 HDD",
@@ -52,6 +52,7 @@
   "BaseRecalibrator.interval_padding":0,
   "BaseRecalibrator.interval_set_rule":"UNION",
   "BaseRecalibrator.lenient":false,
+  "BaseRecalibrator.max_variants_per_shard":0,
   "BaseRecalibrator.QUIET":false,
   "BaseRecalibrator.read_filter":null,
   "BaseRecalibrator.read_index":null,
