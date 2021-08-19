@@ -1,6 +1,6 @@
 version 1.0
 
-# Run PrintReads (WDL auto generated from GATK Version 4.2.1.0-SNAPSHOT)
+# Run PrintReads (WDL auto generated from GATK Version 4.2.2.0-SNAPSHOT)
 #
 # Print reads in the SAM/BAM/CRAM file
 #
