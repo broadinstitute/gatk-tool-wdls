@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CountBases (WDL auto generated from GATK Version 4.2.2.0-SNAPSHOT)
+# Run CountBases (WDL auto generated from GATK Version 4.2.3.0-SNAPSHOT)
 #
 # Count bases in a SAM/BAM/CRAM file
 #

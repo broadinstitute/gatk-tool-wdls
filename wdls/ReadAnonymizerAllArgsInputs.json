@@ -1,5 +1,5 @@
 {
-  "ReadAnonymizer.dockerImage": "broadinstitute/gatk:4.2.2.0-SNAPSHOT",
+  "ReadAnonymizer.dockerImage": "broadinstitute/gatk:4.2.3.0-SNAPSHOT",
   "ReadAnonymizer.gatk": "gatk",
   "ReadAnonymizer.memoryRequirements": "4G",
   "ReadAnonymizer.diskRequirements": "local-disk 40 HDD",

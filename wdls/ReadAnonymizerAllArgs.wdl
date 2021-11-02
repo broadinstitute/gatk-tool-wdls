@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ReadAnonymizer **EXPERIMENTAL** ReadAnonymizer (WDL auto generated from GATK Version 4.2.2.0-SNAPSHOT)
+# Run ReadAnonymizer **EXPERIMENTAL** ReadAnonymizer (WDL auto generated from GATK Version 4.2.3.0-SNAPSHOT)
 #
 # Replace bases in reads with reference bases.
 #

@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.2.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.3.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #

@@ -1,5 +1,5 @@
 {
-  "FlagStat.dockerImage": "broadinstitute/gatk:4.2.2.0-SNAPSHOT",
+  "FlagStat.dockerImage": "broadinstitute/gatk:4.2.3.0-SNAPSHOT",
   "FlagStat.gatk": "gatk",
   "FlagStat.memoryRequirements": "4G",
   "FlagStat.diskRequirements": "local-disk 40 HDD",

@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.2.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.3.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -26,6 +26,7 @@ version 1.0
 #    annotation_group                                   One or more groups of annotations to apply to variant calls 
 #    annotations_to_exclude                             One or more specific annotations to exclude from variant calls
 #    break_bands_at_multiples_of                        If > 0, reference bands will be broken up at genomic positions that are multiple
+#    call_genotypes                                     Output called genotypes?                                    
 #    cloud_index_prefetch_buffer                        Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP
 #    cloud_prefetch_buffer                              Size of the cloud-only prefetch buffer (in MB; 0 to disable).
 #    convert_to_base_pair_resolution                    If specified, convert banded gVCFs to all-sites gVCFs       
@@ -102,6 +103,7 @@ workflow CombineGVCFs {
     Array[String]? annotation_group
     Array[String]? annotations_to_exclude
     Int? break_bands_at_multiples_of
+    Boolean? call_genotypes
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     Boolean? convert_to_base_pair_resolution
@@ -182,6 +184,7 @@ workflow CombineGVCFs {
         annotation_group                                   = annotation_group,
         annotations_to_exclude                             = annotations_to_exclude,
         break_bands_at_multiples_of                        = break_bands_at_multiples_of,
+        call_genotypes                                     = call_genotypes,
         cloud_index_prefetch_buffer                        = cloud_index_prefetch_buffer,
         cloud_prefetch_buffer                              = cloud_prefetch_buffer,
         convert_to_base_pair_resolution                    = convert_to_base_pair_resolution,
@@ -257,6 +260,7 @@ workflow CombineGVCFs {
     annotation_group: { description: "One or more groups of annotations to apply to variant calls" }
     annotations_to_exclude: { description: "One or more specific annotations to exclude from variant calls" }
     break_bands_at_multiples_of: { description: "If > 0, reference bands will be broken up at genomic positions that are multiple" }
+    call_genotypes: { description: "Output called genotypes?" }
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
     cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
     convert_to_base_pair_resolution: { description: "If specified, convert banded gVCFs to all-sites gVCFs" }
@@ -324,6 +328,7 @@ task CombineGVCFs {
     Array[String]? annotation_group
     Array[String]? annotations_to_exclude
     Int? break_bands_at_multiples_of
+    Boolean? call_genotypes
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     Boolean? convert_to_base_pair_resolution
@@ -378,6 +383,7 @@ task CombineGVCFs {
     ~{true='--annotation-group ' false='' defined(annotation_group)}~{sep=' --annotation-group ' annotation_group} \
     ~{true='--annotations-to-exclude ' false='' defined(annotations_to_exclude)}~{sep=' --annotations-to-exclude ' annotations_to_exclude} \
     ~{true='--break-bands-at-multiples-of ' false='' defined(break_bands_at_multiples_of)}~{sep=' --break-bands-at-multiples-of ' break_bands_at_multiples_of} \
+    ~{true='--call-genotypes ' false='' defined(call_genotypes)}~{sep=' --call-genotypes ' call_genotypes} \
     ~{true='--cloud-index-prefetch-buffer ' false='' defined(cloud_index_prefetch_buffer)}~{sep=' --cloud-index-prefetch-buffer ' cloud_index_prefetch_buffer} \
     ~{true='--cloud-prefetch-buffer ' false='' defined(cloud_prefetch_buffer)}~{sep=' --cloud-prefetch-buffer ' cloud_prefetch_buffer} \
     ~{true='--convert-to-base-pair-resolution ' false='' defined(convert_to_base_pair_resolution)}~{sep=' --convert-to-base-pair-resolution ' convert_to_base_pair_resolution} \
@@ -459,6 +465,7 @@ task CombineGVCFs {
     annotation_group: { description: "One or more groups of annotations to apply to variant calls" }
     annotations_to_exclude: { description: "One or more specific annotations to exclude from variant calls" }
     break_bands_at_multiples_of: { description: "If > 0, reference bands will be broken up at genomic positions that are multiple" }
+    call_genotypes: { description: "Output called genotypes?" }
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
     cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
     convert_to_base_pair_resolution: { description: "If specified, convert banded gVCFs to all-sites gVCFs" }
