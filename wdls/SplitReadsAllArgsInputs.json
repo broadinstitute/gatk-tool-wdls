@@ -1,5 +1,5 @@
 {
-  "SplitReads.dockerImage": "broadinstitute/gatk:4.2.3.0-SNAPSHOT",
+  "SplitReads.dockerImage": "broadinstitute/gatk:4.2.4.0-SNAPSHOT",
   "SplitReads.gatk": "gatk",
   "SplitReads.memoryRequirements": "4G",
   "SplitReads.diskRequirements": "local-disk 40 HDD",

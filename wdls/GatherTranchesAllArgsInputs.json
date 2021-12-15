@@ -1,5 +1,5 @@
 {
-  "GatherTranches.dockerImage": "broadinstitute/gatk:4.2.3.0-SNAPSHOT",
+  "GatherTranches.dockerImage": "broadinstitute/gatk:4.2.4.0-SNAPSHOT",
   "GatherTranches.gatk": "gatk",
   "GatherTranches.memoryRequirements": "4G",
   "GatherTranches.diskRequirements": "local-disk 40 HDD",

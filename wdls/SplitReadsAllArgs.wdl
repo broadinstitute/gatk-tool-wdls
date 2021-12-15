@@ -1,6 +1,6 @@
 version 1.0
 
-# Run SplitReads (WDL auto generated from GATK Version 4.2.3.0-SNAPSHOT)
+# Run SplitReads (WDL auto generated from GATK Version 4.2.4.0-SNAPSHOT)
 #
 # Outputs reads from a SAM/BAM/CRAM by read group, sample and library name
 #
