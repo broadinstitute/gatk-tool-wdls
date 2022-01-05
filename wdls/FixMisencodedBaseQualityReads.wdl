@@ -1,6 +1,6 @@
 version 1.0
 
-# Run FixMisencodedBaseQualityReads (WDL auto generated from GATK Version 4.2.4.0-SNAPSHOT)
+# Run FixMisencodedBaseQualityReads (WDL auto generated from GATK Version 4.2.4.1-SNAPSHOT)
 #
 # Fix Illumina base quality scores in a SAM/BAM/CRAM file
 #

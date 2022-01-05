@@ -1,5 +1,5 @@
 {
-  "ClipReads.dockerImage": "broadinstitute/gatk:4.2.4.0-SNAPSHOT",
+  "ClipReads.dockerImage": "broadinstitute/gatk:4.2.4.1-SNAPSHOT",
   "ClipReads.gatk": "gatk",
   "ClipReads.memoryRequirements": "4G",
   "ClipReads.diskRequirements": "local-disk 40 HDD",

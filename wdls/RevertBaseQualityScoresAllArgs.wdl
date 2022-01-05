@@ -1,6 +1,6 @@
 version 1.0
 
-# Run RevertBaseQualityScores (WDL auto generated from GATK Version 4.2.4.0-SNAPSHOT)
+# Run RevertBaseQualityScores (WDL auto generated from GATK Version 4.2.4.1-SNAPSHOT)
 #
 # Revert Quality Scores in a SAM/BAM/CRAM file
 #

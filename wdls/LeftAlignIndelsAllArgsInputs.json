@@ -1,5 +1,5 @@
 {
-  "LeftAlignIndels.dockerImage": "broadinstitute/gatk:4.2.4.0-SNAPSHOT",
+  "LeftAlignIndels.dockerImage": "broadinstitute/gatk:4.2.4.1-SNAPSHOT",
   "LeftAlignIndels.gatk": "gatk",
   "LeftAlignIndels.memoryRequirements": "4G",
   "LeftAlignIndels.diskRequirements": "local-disk 40 HDD",

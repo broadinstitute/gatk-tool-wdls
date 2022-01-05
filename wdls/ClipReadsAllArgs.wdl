@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ClipReads (WDL auto generated from GATK Version 4.2.4.0-SNAPSHOT)
+# Run ClipReads (WDL auto generated from GATK Version 4.2.4.1-SNAPSHOT)
 #
 # Clip reads in a SAM/BAM/CRAM file
 #
