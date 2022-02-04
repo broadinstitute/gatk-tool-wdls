@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ApplyBQSR (WDL auto generated from GATK Version 4.2.4.1-SNAPSHOT)
+# Run ApplyBQSR (WDL auto generated from GATK Version 4.2.5.0-SNAPSHOT)
 #
 # Apply base quality score recalibration
 #
