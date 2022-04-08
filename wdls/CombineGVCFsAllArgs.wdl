@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.5.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.6.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -20,6 +20,7 @@ version 1.0
 #    referenceIndex                                     Companion resource for reference                            
 #    referenceDictionary                                Companion resource for reference                            
 #    variant                                            One or more VCF files containing variants                   
+#    variantIndex                                       Optional Companion resource for variant                              
 #
 #  Optional Tool Arguments
 #    annotation                                         One or more specific annotations to add to variant calls    
@@ -97,6 +98,7 @@ workflow CombineGVCFs {
     File referenceIndex
     File referenceDictionary
     Array[File] variant
+    Array[File]? variantIndex
 
     # Optional Tool Arguments
     Array[String]? annotation
@@ -178,6 +180,7 @@ workflow CombineGVCFs {
         referenceIndex                                     = referenceIndex,
         referenceDictionary                                = referenceDictionary,
         variant                                            = variant,
+        variantIndex                                       = variantIndex,
 
         # Optional Tool Arguments
         annotation                                         = annotation,
@@ -254,6 +257,7 @@ workflow CombineGVCFs {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     variant: { description: "One or more VCF files containing variants" }
+    variantIndex: { description: "Companion resource for variant" }
 
     # Optional Tool Arguments
     annotation: { description: "One or more specific annotations to add to variant calls" }
@@ -324,6 +328,7 @@ task CombineGVCFs {
     File referenceIndex
     File referenceDictionary
     Array[File] variant
+    Array[File]? variantIndex
     Array[String]? annotation
     Array[String]? annotation_group
     Array[String]? annotations_to_exclude
@@ -459,6 +464,7 @@ task CombineGVCFs {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     variant: { description: "One or more VCF files containing variants" }
+    variantIndex: { description: "Companion resource for variant" }
 
     # Optional Tool Arguments
     annotation: { description: "One or more specific annotations to add to variant calls" }

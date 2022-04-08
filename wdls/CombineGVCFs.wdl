@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.5.0-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.6.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -20,6 +20,7 @@ version 1.0
 #    referenceIndex                                     Companion resource for reference                            
 #    referenceDictionary                                Companion resource for reference                            
 #    variant                                            One or more VCF files containing variants                   
+#    variantIndex                                       Optional Companion resource for variant                              
 #
 
 workflow CombineGVCFs {
@@ -47,6 +48,7 @@ workflow CombineGVCFs {
     File referenceIndex
     File referenceDictionary
     Array[File] variant
+    Array[File]? variantIndex
 
   }
 
@@ -77,6 +79,7 @@ workflow CombineGVCFs {
         referenceIndex                                     = referenceIndex,
         referenceDictionary                                = referenceDictionary,
         variant                                            = variant,
+        variantIndex                                       = variantIndex,
 
   }
 
@@ -102,6 +105,7 @@ workflow CombineGVCFs {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     variant: { description: "One or more VCF files containing variants" }
+    variantIndex: { description: "Companion resource for variant" }
   }
 }
 
@@ -121,6 +125,7 @@ task CombineGVCFs {
     File referenceIndex
     File referenceDictionary
     Array[File] variant
+    Array[File]? variantIndex
 
   }
 
@@ -163,6 +168,7 @@ task CombineGVCFs {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     variant: { description: "One or more VCF files containing variants" }
+    variantIndex: { description: "Companion resource for variant" }
   }
 }
 

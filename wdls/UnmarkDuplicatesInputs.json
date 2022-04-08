@@ -1,5 +1,5 @@
 {
-  "UnmarkDuplicates.dockerImage": "broadinstitute/gatk:4.2.5.0-SNAPSHOT",
+  "UnmarkDuplicates.dockerImage": "broadinstitute/gatk:4.2.6.0-SNAPSHOT",
   "UnmarkDuplicates.gatk": "gatk",
   "UnmarkDuplicates.memoryRequirements": "4G",
   "UnmarkDuplicates.diskRequirements": "local-disk 40 HDD",
