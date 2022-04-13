@@ -1,5 +1,5 @@
 {
-  "RevertBaseQualityScores.dockerImage": "broadinstitute/gatk:4.2.6.0-SNAPSHOT",
+  "RevertBaseQualityScores.dockerImage": "broadinstitute/gatk:4.2.6.1-SNAPSHOT",
   "RevertBaseQualityScores.gatk": "gatk",
   "RevertBaseQualityScores.memoryRequirements": "4G",
   "RevertBaseQualityScores.diskRequirements": "local-disk 40 HDD",

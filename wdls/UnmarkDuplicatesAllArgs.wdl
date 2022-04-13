@@ -1,6 +1,6 @@
 version 1.0
 
-# Run UnmarkDuplicates (WDL auto generated from GATK Version 4.2.6.0-SNAPSHOT)
+# Run UnmarkDuplicates (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
 #
 # Clears the 0x400 duplicate SAM flag
 #
