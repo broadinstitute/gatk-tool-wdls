@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ClipReads (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
+# Run ClipReads (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
 #
 # Clip reads in a SAM/BAM/CRAM file
 #
@@ -20,6 +20,7 @@ version 1.0
 #    outputIndex                                        Optional Companion resource for output_arg                           
 #
 #  Optional Tool Arguments
+#    clip_adapter                                       Clip locations according to XF, XT tags. This will destroy reads which have none
 #    clip_representation                                How should we actually clip the bases?                      
 #    clip_sequence                                      Remove sequences within reads matching this sequence        
 #    clip_sequences_file                                Remove sequences within reads matching the sequences in this FASTA file
@@ -32,6 +33,7 @@ version 1.0
 #    gcs_project_for_requester_pays                     Project to bill when accessing requester pays buckets. If unset, these buckets c
 #    interval_merging_rule                              Interval merging rule for abutting intervals                
 #    intervals                                          One or more genomic intervals over which to operate         
+#    min_read_length_to_output                          Shortest read to output. Note that this works correctly only on non-paired reads
 #    output_statistics                                  File to output statistics                                   
 #    q_trimming_threshold                               If provided, the Q-score clipper will be applied            
 #    read                                                                                                           
@@ -92,6 +94,7 @@ workflow ClipReads {
     String? outputIndex
 
     # Optional Tool Arguments
+    Boolean? clip_adapter
     String? clip_representation
     Array[String]? clip_sequence
     File? clip_sequences_file
@@ -104,6 +107,7 @@ workflow ClipReads {
     String? gcs_project_for_requester_pays
     String? interval_merging_rule
     Array[String]? intervals
+    Int? min_read_length_to_output
     String? output_statistics
     Int? q_trimming_threshold
     String? read
@@ -168,6 +172,7 @@ workflow ClipReads {
         outputIndex                                        = outputIndex,
 
         # Optional Tool Arguments
+        clip_adapter                                       = clip_adapter,
         clip_representation                                = clip_representation,
         clip_sequence                                      = clip_sequence,
         clip_sequences_file                                = clip_sequences_file,
@@ -180,6 +185,7 @@ workflow ClipReads {
         gcs_project_for_requester_pays                     = gcs_project_for_requester_pays,
         interval_merging_rule                              = interval_merging_rule,
         intervals                                          = intervals,
+        min_read_length_to_output                          = min_read_length_to_output,
         output_statistics                                  = output_statistics,
         q_trimming_threshold                               = q_trimming_threshold,
         read                                               = read,
@@ -240,6 +246,7 @@ workflow ClipReads {
     outputIndex: { description: "Companion resource for output_arg" }
 
     # Optional Tool Arguments
+    clip_adapter: { description: "Clip locations according to XF, XT tags. This will destroy reads which have none" }
     clip_representation: { description: "How should we actually clip the bases?" }
     clip_sequence: { description: "Remove sequences within reads matching this sequence" }
     clip_sequences_file: { description: "Remove sequences within reads matching the sequences in this FASTA file" }
@@ -252,6 +259,7 @@ workflow ClipReads {
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
     interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
     intervals: { description: "One or more genomic intervals over which to operate" }
+    min_read_length_to_output: { description: "Shortest read to output. Note that this works correctly only on non-paired reads" }
     output_statistics: { description: "File to output statistics" }
     q_trimming_threshold: { description: "If provided, the Q-score clipper will be applied" }
     read: { description: "" }
@@ -303,6 +311,7 @@ task ClipReads {
     Array[File]? inputIndex
     String output_arg
     String? outputIndex
+    Boolean? clip_adapter
     String? clip_representation
     Array[String]? clip_sequence
     File? clip_sequences_file
@@ -315,6 +324,7 @@ task ClipReads {
     String? gcs_project_for_requester_pays
     String? interval_merging_rule
     Array[String]? intervals
+    Int? min_read_length_to_output
     String? output_statistics
     Int? q_trimming_threshold
     String? read
@@ -354,6 +364,7 @@ task ClipReads {
     ~{gatk} ClipReads \
     --input ~{sep=' --input ' input_arg} \
     --output ~{sep=' --output ' output_arg} \
+    ~{true='--clip-adapter ' false='' defined(clip_adapter)}~{sep=' --clip-adapter ' clip_adapter} \
     ~{true='--clip-representation ' false='' defined(clip_representation)}~{sep=' --clip-representation ' clip_representation} \
     ~{true='--clip-sequence ' false='' defined(clip_sequence)}~{sep=' --clip-sequence ' clip_sequence} \
     ~{true='--clip-sequences-file ' false='' defined(clip_sequences_file)}~{sep=' --clip-sequences-file ' clip_sequences_file} \
@@ -366,6 +377,7 @@ task ClipReads {
     ~{true='--gcs-project-for-requester-pays ' false='' defined(gcs_project_for_requester_pays)}~{sep=' --gcs-project-for-requester-pays ' gcs_project_for_requester_pays} \
     ~{true='--interval-merging-rule ' false='' defined(interval_merging_rule)}~{sep=' --interval-merging-rule ' interval_merging_rule} \
     ~{true='--intervals ' false='' defined(intervals)}~{sep=' --intervals ' intervals} \
+    ~{true='--min-read-length-to-output ' false='' defined(min_read_length_to_output)}~{sep=' --min-read-length-to-output ' min_read_length_to_output} \
     ~{true='--output-statistics ' false='' defined(output_statistics)}~{sep=' --output-statistics ' output_statistics} \
     ~{true='--q-trimming-threshold ' false='' defined(q_trimming_threshold)}~{sep=' --q-trimming-threshold ' q_trimming_threshold} \
     ~{true='--read ' false='' defined(read)}~{sep=' --read ' read} \
@@ -431,6 +443,7 @@ task ClipReads {
     outputIndex: { description: "Companion resource for output_arg" }
 
     # Optional Tool Arguments
+    clip_adapter: { description: "Clip locations according to XF, XT tags. This will destroy reads which have none" }
     clip_representation: { description: "How should we actually clip the bases?" }
     clip_sequence: { description: "Remove sequences within reads matching this sequence" }
     clip_sequences_file: { description: "Remove sequences within reads matching the sequences in this FASTA file" }
@@ -443,6 +456,7 @@ task ClipReads {
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
     interval_merging_rule: { description: "Interval merging rule for abutting intervals" }
     intervals: { description: "One or more genomic intervals over which to operate" }
+    min_read_length_to_output: { description: "Shortest read to output. Note that this works correctly only on non-paired reads" }
     output_statistics: { description: "File to output statistics" }
     q_trimming_threshold: { description: "If provided, the Q-score clipper will be applied" }
     read: { description: "" }

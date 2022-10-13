@@ -1,6 +1,6 @@
 version 1.0
 
-# Run LeftAlignIndels (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
+# Run LeftAlignIndels (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
 #
 # Left-aligns indels from reads in a SAM/BAM/CRAM file
 #

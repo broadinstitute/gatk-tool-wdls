@@ -1,5 +1,5 @@
 {
-  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.2.6.1-SNAPSHOT",
+  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.3.0.0-SNAPSHOT",
   "CombineGVCFs.gatk": "gatk",
   "CombineGVCFs.memoryRequirements": "4G",
   "CombineGVCFs.diskRequirements": "local-disk 40 HDD",

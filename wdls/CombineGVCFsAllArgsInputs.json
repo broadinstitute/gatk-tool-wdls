@@ -1,5 +1,5 @@
 {
-  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.2.6.1-SNAPSHOT",
+  "CombineGVCFs.dockerImage": "broadinstitute/gatk:4.3.0.0-SNAPSHOT",
   "CombineGVCFs.gatk": "gatk",
   "CombineGVCFs.memoryRequirements": "4G",
   "CombineGVCFs.diskRequirements": "local-disk 40 HDD",
@@ -27,6 +27,7 @@
   "CombineGVCFs.disable_bam_index_caching":false,
   "CombineGVCFs.disable_sequence_dictionary_validation":false,
   "CombineGVCFs.drop_somatic_filtering_annotations":false,
+  "CombineGVCFs.flow_order_for_annotations":null,
   "CombineGVCFs.founder_id":null,
   "CombineGVCFs.gcs_max_retries":20,
   "CombineGVCFs.gcs_project_for_requester_pays":null,

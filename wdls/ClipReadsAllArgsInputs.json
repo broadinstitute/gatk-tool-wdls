@@ -1,5 +1,5 @@
 {
-  "ClipReads.dockerImage": "broadinstitute/gatk:4.2.6.1-SNAPSHOT",
+  "ClipReads.dockerImage": "broadinstitute/gatk:4.3.0.0-SNAPSHOT",
   "ClipReads.gatk": "gatk",
   "ClipReads.memoryRequirements": "4G",
   "ClipReads.diskRequirements": "local-disk 40 HDD",
@@ -12,6 +12,7 @@
   "ClipReads.outputIndex": "String",
   "ClipReads.output_arg":"String",
 
+  "ClipReads.clip_adapter":false,
   "ClipReads.clip_representation":"WRITE_NS",
   "ClipReads.clip_sequence":null,
   "ClipReads.clip_sequences_file":null,
@@ -24,6 +25,7 @@
   "ClipReads.gcs_project_for_requester_pays":null,
   "ClipReads.interval_merging_rule":"ALL",
   "ClipReads.intervals":null,
+  "ClipReads.min_read_length_to_output":0,
   "ClipReads.output_statistics":null,
   "ClipReads.q_trimming_threshold":-1,
   "ClipReads.read":null,

@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CollectReadCounts (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
+# Run CollectReadCounts (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
 #
 # Collects read counts at specified intervals
 #

@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
+# Run CombineGVCFs (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
 #
 # Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
 #
@@ -35,6 +35,7 @@ version 1.0
 #    disable_bam_index_caching                          If true, dont cache bam indexes, this will reduce memory requirements but may ha
 #    disable_sequence_dictionary_validation             If specified, do not check the sequence dictionaries from our inputs for compati
 #    drop_somatic_filtering_annotations                 For input somatic GVCFs (i.e. from Mutect2) drop filtering annotations
+#    flow_order_for_annotations                         flow order used for this annotations. [readGroup:]flowOrder 
 #    founder_id                                         Samples representing the population founders                
 #    gcs_max_retries                                    If the GCS bucket channel errors out, how many times it will attempt to re-initi
 #    gcs_project_for_requester_pays                     Project to bill when accessing requester pays buckets. If unset, these buckets c
@@ -113,6 +114,7 @@ workflow CombineGVCFs {
     Boolean? disable_bam_index_caching
     Boolean? disable_sequence_dictionary_validation
     Boolean? drop_somatic_filtering_annotations
+    Array[String]? flow_order_for_annotations
     Array[String]? founder_id
     Int? gcs_max_retries
     String? gcs_project_for_requester_pays
@@ -195,6 +197,7 @@ workflow CombineGVCFs {
         disable_bam_index_caching                          = disable_bam_index_caching,
         disable_sequence_dictionary_validation             = disable_sequence_dictionary_validation,
         drop_somatic_filtering_annotations                 = drop_somatic_filtering_annotations,
+        flow_order_for_annotations                         = flow_order_for_annotations,
         founder_id                                         = founder_id,
         gcs_max_retries                                    = gcs_max_retries,
         gcs_project_for_requester_pays                     = gcs_project_for_requester_pays,
@@ -272,6 +275,7 @@ workflow CombineGVCFs {
     disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }
     disable_sequence_dictionary_validation: { description: "If specified, do not check the sequence dictionaries from our inputs for compati" }
     drop_somatic_filtering_annotations: { description: "For input somatic GVCFs (i.e. from Mutect2) drop filtering annotations" }
+    flow_order_for_annotations: { description: "flow order used for this annotations. [readGroup:]flowOrder" }
     founder_id: { description: "Samples representing the population founders" }
     gcs_max_retries: { description: "If the GCS bucket channel errors out, how many times it will attempt to re-initi" }
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }
@@ -341,6 +345,7 @@ task CombineGVCFs {
     Boolean? disable_bam_index_caching
     Boolean? disable_sequence_dictionary_validation
     Boolean? drop_somatic_filtering_annotations
+    Array[String]? flow_order_for_annotations
     Array[String]? founder_id
     Int? gcs_max_retries
     String? gcs_project_for_requester_pays
@@ -396,6 +401,7 @@ task CombineGVCFs {
     ~{true='--disable-bam-index-caching ' false='' defined(disable_bam_index_caching)}~{sep=' --disable-bam-index-caching ' disable_bam_index_caching} \
     ~{true='--disable-sequence-dictionary-validation ' false='' defined(disable_sequence_dictionary_validation)}~{sep=' --disable-sequence-dictionary-validation ' disable_sequence_dictionary_validation} \
     ~{true='--drop-somatic-filtering-annotations ' false='' defined(drop_somatic_filtering_annotations)}~{sep=' --drop-somatic-filtering-annotations ' drop_somatic_filtering_annotations} \
+    ~{true='--flow-order-for-annotations ' false='' defined(flow_order_for_annotations)}~{sep=' --flow-order-for-annotations ' flow_order_for_annotations} \
     ~{true='--founder-id ' false='' defined(founder_id)}~{sep=' --founder-id ' founder_id} \
     ~{true='--gcs-max-retries ' false='' defined(gcs_max_retries)}~{sep=' --gcs-max-retries ' gcs_max_retries} \
     ~{true='--gcs-project-for-requester-pays ' false='' defined(gcs_project_for_requester_pays)}~{sep=' --gcs-project-for-requester-pays ' gcs_project_for_requester_pays} \
@@ -479,6 +485,7 @@ task CombineGVCFs {
     disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }
     disable_sequence_dictionary_validation: { description: "If specified, do not check the sequence dictionaries from our inputs for compati" }
     drop_somatic_filtering_annotations: { description: "For input somatic GVCFs (i.e. from Mutect2) drop filtering annotations" }
+    flow_order_for_annotations: { description: "flow order used for this annotations. [readGroup:]flowOrder" }
     founder_id: { description: "Samples representing the population founders" }
     gcs_max_retries: { description: "If the GCS bucket channel errors out, how many times it will attempt to re-initi" }
     gcs_project_for_requester_pays: { description: "Project to bill when accessing requester pays buckets. If unset, these buckets c" }

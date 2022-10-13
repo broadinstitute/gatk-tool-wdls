@@ -1,6 +1,6 @@
 version 1.0
 
-# Run CountReads (WDL auto generated from GATK Version 4.2.6.1-SNAPSHOT)
+# Run CountReads (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
 #
 # Count reads in a SAM/BAM/CRAM file
 #
