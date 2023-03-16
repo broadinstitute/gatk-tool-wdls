@@ -1,5 +1,5 @@
 {
-  "FixMisencodedBaseQualityReads.dockerImage": "broadinstitute/gatk:4.3.0.0-SNAPSHOT",
+  "FixMisencodedBaseQualityReads.dockerImage": "broadinstitute/gatk:4.4.0.0-SNAPSHOT",
   "FixMisencodedBaseQualityReads.gatk": "gatk",
   "FixMisencodedBaseQualityReads.memoryRequirements": "4G",
   "FixMisencodedBaseQualityReads.diskRequirements": "local-disk 40 HDD",

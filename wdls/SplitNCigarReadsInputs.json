@@ -1,5 +1,5 @@
 {
-  "SplitNCigarReads.dockerImage": "broadinstitute/gatk:4.3.0.0-SNAPSHOT",
+  "SplitNCigarReads.dockerImage": "broadinstitute/gatk:4.4.0.0-SNAPSHOT",
   "SplitNCigarReads.gatk": "gatk",
   "SplitNCigarReads.memoryRequirements": "4G",
   "SplitNCigarReads.diskRequirements": "local-disk 40 HDD",

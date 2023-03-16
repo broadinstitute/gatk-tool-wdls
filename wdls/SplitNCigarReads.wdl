@@ -1,6 +1,6 @@
 version 1.0
 
-# Run SplitNCigarReads (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
+# Run SplitNCigarReads (WDL auto generated from GATK Version 4.4.0.0-SNAPSHOT)
 #
 # Split Reads with N in Cigar
 #

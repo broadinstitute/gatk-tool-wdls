@@ -1,6 +1,6 @@
 version 1.0
 
-# Run BaseRecalibrator (WDL auto generated from GATK Version 4.3.0.0-SNAPSHOT)
+# Run BaseRecalibrator (WDL auto generated from GATK Version 4.4.0.0-SNAPSHOT)
 #
 # Generates recalibration table for Base Quality Score Recalibration (BQSR)
 #
