@@ -1,5 +1,5 @@
 {
-  "FixMisencodedBaseQualityReads.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "FixMisencodedBaseQualityReads.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "FixMisencodedBaseQualityReads.gatk": "gatk",
   "FixMisencodedBaseQualityReads.memoryRequirements": "4G",
   "FixMisencodedBaseQualityReads.diskRequirements": "local-disk 40 HDD",
@@ -38,6 +38,7 @@
   "FixMisencodedBaseQualityReads.interval_exclusion_padding":0,
   "FixMisencodedBaseQualityReads.interval_padding":0,
   "FixMisencodedBaseQualityReads.interval_set_rule":"UNION",
+  "FixMisencodedBaseQualityReads.inverted_read_filter":null,
   "FixMisencodedBaseQualityReads.lenient":false,
   "FixMisencodedBaseQualityReads.max_variants_per_shard":0,
   "FixMisencodedBaseQualityReads.QUIET":false,

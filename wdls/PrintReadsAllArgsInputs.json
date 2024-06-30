@@ -1,5 +1,5 @@
 {
-  "PrintReads.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "PrintReads.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "PrintReads.gatk": "gatk",
   "PrintReads.memoryRequirements": "4G",
   "PrintReads.diskRequirements": "local-disk 40 HDD",
@@ -38,6 +38,7 @@
   "PrintReads.interval_exclusion_padding":0,
   "PrintReads.interval_padding":0,
   "PrintReads.interval_set_rule":"UNION",
+  "PrintReads.inverted_read_filter":null,
   "PrintReads.lenient":false,
   "PrintReads.max_variants_per_shard":0,
   "PrintReads.QUIET":false,

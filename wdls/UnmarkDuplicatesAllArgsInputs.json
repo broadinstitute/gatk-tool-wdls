@@ -1,5 +1,5 @@
 {
-  "UnmarkDuplicates.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "UnmarkDuplicates.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "UnmarkDuplicates.gatk": "gatk",
   "UnmarkDuplicates.memoryRequirements": "4G",
   "UnmarkDuplicates.diskRequirements": "local-disk 40 HDD",
@@ -38,6 +38,7 @@
   "UnmarkDuplicates.interval_exclusion_padding":0,
   "UnmarkDuplicates.interval_padding":0,
   "UnmarkDuplicates.interval_set_rule":"UNION",
+  "UnmarkDuplicates.inverted_read_filter":null,
   "UnmarkDuplicates.lenient":false,
   "UnmarkDuplicates.max_variants_per_shard":0,
   "UnmarkDuplicates.QUIET":false,

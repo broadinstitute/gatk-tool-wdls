@@ -1,6 +1,6 @@
 version 1.0
 
-# Run RevertBaseQualityScores (WDL auto generated from GATK Version 4.5.0.0-SNAPSHOT)
+# Run RevertBaseQualityScores (WDL auto generated from GATK Version 4.6.0.0-SNAPSHOT)
 #
 # Revert Quality Scores in a SAM/BAM/CRAM file
 #
@@ -47,6 +47,7 @@ version 1.0
 #    interval_exclusion_padding                         Amount of padding (in bp) to add to each interval you are excluding.
 #    interval_padding                                   Amount of padding (in bp) to add to each interval you are including.
 #    interval_set_rule                                  Set merging approach to use for combining interval inputs   
+#    inverted_read_filter                               Inverted (with flipped acceptance/failure conditions) read filters applied befor
 #    lenient                                            Lenient processing of VCF files                             
 #    max_variants_per_shard                             If non-zero, partitions VCF output into shards, each containing up to the given 
 #    QUIET                                              Whether to suppress job-summary info on System.err.         
@@ -112,6 +113,7 @@ workflow RevertBaseQualityScores {
     Int? interval_exclusion_padding
     Int? interval_padding
     String? interval_set_rule
+    Array[String]? inverted_read_filter
     Boolean? lenient
     Int? max_variants_per_shard
     Boolean? QUIET
@@ -181,6 +183,7 @@ workflow RevertBaseQualityScores {
         interval_exclusion_padding                         = interval_exclusion_padding,
         interval_padding                                   = interval_padding,
         interval_set_rule                                  = interval_set_rule,
+        inverted_read_filter                               = inverted_read_filter,
         lenient                                            = lenient,
         max_variants_per_shard                             = max_variants_per_shard,
         QUIET                                              = QUIET,
@@ -245,6 +248,7 @@ workflow RevertBaseQualityScores {
     interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
+    inverted_read_filter: { description: "Inverted (with flipped acceptance/failure conditions) read filters applied befor" }
     lenient: { description: "Lenient processing of VCF files" }
     max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }
@@ -299,6 +303,7 @@ task RevertBaseQualityScores {
     Int? interval_exclusion_padding
     Int? interval_padding
     String? interval_set_rule
+    Array[String]? inverted_read_filter
     Boolean? lenient
     Int? max_variants_per_shard
     Boolean? QUIET
@@ -341,6 +346,7 @@ task RevertBaseQualityScores {
     ~{true='--interval-exclusion-padding ' false='' defined(interval_exclusion_padding)}~{sep=' --interval-exclusion-padding ' interval_exclusion_padding} \
     ~{true='--interval-padding ' false='' defined(interval_padding)}~{sep=' --interval-padding ' interval_padding} \
     ~{true='--interval-set-rule ' false='' defined(interval_set_rule)}~{sep=' --interval-set-rule ' interval_set_rule} \
+    ~{true='--inverted-read-filter ' false='' defined(inverted_read_filter)}~{sep=' --inverted-read-filter ' inverted_read_filter} \
     ~{true='--lenient ' false='' defined(lenient)}~{sep=' --lenient ' lenient} \
     ~{true='--max-variants-per-shard ' false='' defined(max_variants_per_shard)}~{sep=' --max-variants-per-shard ' max_variants_per_shard} \
     ~{true='--QUIET ' false='' defined(QUIET)}~{sep=' --QUIET ' QUIET} \
@@ -414,6 +420,7 @@ task RevertBaseQualityScores {
     interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
+    inverted_read_filter: { description: "Inverted (with flipped acceptance/failure conditions) read filters applied befor" }
     lenient: { description: "Lenient processing of VCF files" }
     max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }

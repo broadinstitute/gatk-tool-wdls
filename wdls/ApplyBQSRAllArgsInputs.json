@@ -1,5 +1,5 @@
 {
-  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "ApplyBQSR.gatk": "gatk",
   "ApplyBQSR.memoryRequirements": "4G",
   "ApplyBQSR.diskRequirements": "local-disk 40 HDD",
@@ -44,6 +44,7 @@
   "ApplyBQSR.interval_exclusion_padding":0,
   "ApplyBQSR.interval_padding":0,
   "ApplyBQSR.interval_set_rule":"UNION",
+  "ApplyBQSR.inverted_read_filter":null,
   "ApplyBQSR.lenient":false,
   "ApplyBQSR.max_variants_per_shard":0,
   "ApplyBQSR.QUIET":false,

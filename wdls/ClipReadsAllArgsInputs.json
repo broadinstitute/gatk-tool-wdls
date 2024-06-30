@@ -1,5 +1,5 @@
 {
-  "ClipReads.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "ClipReads.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "ClipReads.gatk": "gatk",
   "ClipReads.memoryRequirements": "4G",
   "ClipReads.diskRequirements": "local-disk 40 HDD",
@@ -47,6 +47,7 @@
   "ClipReads.interval_exclusion_padding":0,
   "ClipReads.interval_padding":0,
   "ClipReads.interval_set_rule":"UNION",
+  "ClipReads.inverted_read_filter":null,
   "ClipReads.lenient":false,
   "ClipReads.max_variants_per_shard":0,
   "ClipReads.QUIET":false,

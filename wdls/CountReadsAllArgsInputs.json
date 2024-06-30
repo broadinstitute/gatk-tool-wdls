@@ -1,5 +1,5 @@
 {
-  "CountReads.dockerImage": "broadinstitute/gatk:4.5.0.0-SNAPSHOT",
+  "CountReads.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
   "CountReads.gatk": "gatk",
   "CountReads.memoryRequirements": "4G",
   "CountReads.diskRequirements": "local-disk 40 HDD",
@@ -37,6 +37,7 @@
   "CountReads.interval_exclusion_padding":0,
   "CountReads.interval_padding":0,
   "CountReads.interval_set_rule":"UNION",
+  "CountReads.inverted_read_filter":null,
   "CountReads.lenient":false,
   "CountReads.max_variants_per_shard":0,
   "CountReads.QUIET":false,
