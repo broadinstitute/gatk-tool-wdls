@@ -1,5 +1,5 @@
 {
-  "CountReads.dockerImage": "broadinstitute/gatk:4.6.0.0-SNAPSHOT",
+  "CountReads.dockerImage": "broadinstitute/gatk:4.6.1.0-SNAPSHOT",
   "CountReads.gatk": "gatk",
   "CountReads.memoryRequirements": "4G",
   "CountReads.diskRequirements": "local-disk 40 HDD",

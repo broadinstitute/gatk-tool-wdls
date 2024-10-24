@@ -1,8 +1,8 @@
 version 1.0
 
-# Run CombineGVCFs (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
+# Run GtfToBed (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
 #
-# Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations
+# Gencode GTF to BED
 #
 #  General Workflow (non-tool) Arguments
 #    dockerImage                                        Docker image for this workflow
@@ -14,16 +14,11 @@ version 1.0
 #    bootdisksizegbRequirements                         Runtime boot disk size for this workflow
 #
 #  Required Tool Arguments
-#    output_arg                                         The combined GVCF output file                               
-#    outputIndex                                        Optional Companion resource for output_arg                           
-#    reference                                          Reference sequence file                                     
-#    referenceIndex                                     Companion resource for reference                            
-#    referenceDictionary                                Companion resource for reference                            
-#    variant                                            One or more VCF files containing variants                   
-#    variantIndex                                       Optional Companion resource for variant                              
+#    gtf_path                                           Path to Gencode GTF file                                    
+#    output_arg                                         Output BED file                                             
 #
 
-workflow CombineGVCFs {
+workflow GtfToBed {
 
   input {
     #Docker to use
@@ -42,17 +37,12 @@ workflow CombineGVCFs {
     String bootdisksizegbRequirements
 
     # Required Arguments
-    String output_arg
-    String? outputIndex
-    File reference
-    File referenceIndex
-    File referenceDictionary
-    Array[File] variant
-    Array[File]? variantIndex
+    File gtf_path
+    File output_arg
 
   }
 
-  call CombineGVCFs {
+  call GtfToBed {
 
     input:
 
@@ -73,20 +63,14 @@ workflow CombineGVCFs {
 
 
         # Required Arguments
+        gtf_path                                           = gtf_path,
         output_arg                                         = output_arg,
-        outputIndex                                        = outputIndex,
-        reference                                          = reference,
-        referenceIndex                                     = referenceIndex,
-        referenceDictionary                                = referenceDictionary,
-        variant                                            = variant,
-        variantIndex                                       = variantIndex,
 
   }
 
   output {
     # Workflow Outputs                                  
-    File CombineGVCFsoutput_arg = CombineGVCFs.CombineGVCFs_output_arg
-    File? CombineGVCFsoutputIndex = CombineGVCFs.CombineGVCFs_outputIndex
+    File GtfToBedresults = GtfToBed.GtfToBed_results
   }
 
   parameter_meta {
@@ -99,17 +83,12 @@ workflow CombineGVCFs {
     bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
 
     # Required Arguments
-    output_arg: { description: "The combined GVCF output file" }
-    outputIndex: { description: "Companion resource for output_arg" }
-    reference: { description: "Reference sequence file" }
-    referenceIndex: { description: "Companion resource for reference" }
-    referenceDictionary: { description: "Companion resource for reference" }
-    variant: { description: "One or more VCF files containing variants" }
-    variantIndex: { description: "Companion resource for variant" }
+    gtf_path: { description: "Path to Gencode GTF file" }
+    output_arg: { description: "Output BED file" }
   }
 }
 
-task CombineGVCFs {
+task GtfToBed {
 
   input {
     String dockerImage
@@ -119,21 +98,15 @@ task CombineGVCFs {
     String cpuRequirements
     String preemptibleRequirements
     String bootdisksizegbRequirements
-    String output_arg
-    String? outputIndex
-    File reference
-    File referenceIndex
-    File referenceDictionary
-    Array[File] variant
-    Array[File]? variantIndex
+    File gtf_path
+    File output_arg
 
   }
 
   command <<<
-    ~{gatk} CombineGVCFs \
+    ~{gatk} GtfToBed \
+    --gtf-path ~{sep=' --gtf-path ' gtf_path} \
     --output ~{sep=' --output ' output_arg} \
-    --reference ~{sep=' --reference ' reference} \
-    --variant ~{sep=' --variant ' variant} \
 
   >>>
 
@@ -148,8 +121,7 @@ task CombineGVCFs {
 
   output {
     # Task Outputs                                      
-    File CombineGVCFs_output_arg = output_arg
-    File? CombineGVCFs_outputIndex = outputIndex
+    File GtfToBed_results = stdout()
   }
 
   parameter_meta {
@@ -162,13 +134,8 @@ task CombineGVCFs {
     bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
 
     # Required Arguments
-    output_arg: { description: "The combined GVCF output file" }
-    outputIndex: { description: "Companion resource for output_arg" }
-    reference: { description: "Reference sequence file" }
-    referenceIndex: { description: "Companion resource for reference" }
-    referenceDictionary: { description: "Companion resource for reference" }
-    variant: { description: "One or more VCF files containing variants" }
-    variantIndex: { description: "Companion resource for variant" }
+    gtf_path: { description: "Path to Gencode GTF file" }
+    output_arg: { description: "Output BED file" }
   }
 }
 

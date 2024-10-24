@@ -1,8 +1,8 @@
 version 1.0
 
-# Run SplitReads (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
+# Run GtfToBed (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
 #
-# Outputs reads from a SAM/BAM/CRAM by read group, sample and library name
+# Gencode GTF to BED
 #
 #  General Workflow (non-tool) Arguments
 #    dockerImage                                        Docker image for this workflow
@@ -14,9 +14,8 @@ version 1.0
 #    bootdisksizegbRequirements                         Runtime boot disk size for this workflow
 #
 #  Required Tool Arguments
-#    input_arg                                          BAM/SAM/CRAM file containing reads                          
-#    inputIndex                                         Optional Companion resource for input_arg                            
-#    output_arg                                         The directory to output SAM/BAM/CRAM files.                 
+#    gtf_path                                           Path to Gencode GTF file                                    
+#    output_arg                                         Output BED file                                             
 #
 #  Optional Tool Arguments
 #    cloud_index_prefetch_buffer                        Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP
@@ -31,9 +30,8 @@ version 1.0
 #    referenceIndex                                     Optional Companion resource for reference                            
 #    referenceDictionary                                Optional Companion resource for reference                            
 #    sites_only_vcf_output                              If true, dont emit genotype fields when writing vcf file output.
-#    split_library_name                                 Split file by library.                                      
-#    split_read_group                                   Split file by read group.                                   
-#    split_sample                                       Split file by sample.                                       
+#    sort_by_transcript                                 Make each row of BED file sorted by transcript              
+#    use_basic_transcript                               Only use basic transcripts                                  
 #
 #  Optional Common Arguments
 #    add_output_sam_program_record                      If true, adds a PG tag to created SAM/BAM/CRAM files.       
@@ -46,6 +44,8 @@ version 1.0
 #    disable_tool_default_read_filters                  Disable all tool default read filters (WARNING: many tools will not function cor
 #    exclude_intervals                                  One or more genomic intervals to exclude from processing    
 #    gatk_config_file                                   A configuration file to use with the GATK.                  
+#    input_arg                                          BAM/SAM/CRAM file containing reads                          
+#    inputIndex                                         Optional Companion resource for input_arg                            
 #    interval_exclusion_padding                         Amount of padding (in bp) to add to each interval you are excluding.
 #    interval_padding                                   Amount of padding (in bp) to add to each interval you are including.
 #    interval_set_rule                                  Set merging approach to use for combining interval inputs   
@@ -63,7 +63,7 @@ version 1.0
 #    use_jdk_inflater                                   Whether to use the JdkInflater (as opposed to IntelInflater)
 #    verbosity                                          Control verbosity of logging.                               
 
-workflow SplitReads {
+workflow GtfToBed {
 
   input {
     #Docker to use
@@ -82,9 +82,8 @@ workflow SplitReads {
     String bootdisksizegbRequirements
 
     # Required Arguments
-    Array[File] input_arg
-    Array[File]? inputIndex
-    String output_arg
+    File gtf_path
+    File output_arg
 
     # Optional Tool Arguments
     Int? cloud_index_prefetch_buffer
@@ -99,9 +98,8 @@ workflow SplitReads {
     File? referenceIndex
     File? referenceDictionary
     Boolean? sites_only_vcf_output
-    Boolean? split_library_name
-    Boolean? split_read_group
-    Boolean? split_sample
+    Boolean? sort_by_transcript
+    Boolean? use_basic_transcript
 
     # Optional Common Arguments
     Boolean? add_output_sam_program_record
@@ -114,6 +112,8 @@ workflow SplitReads {
     Boolean? disable_tool_default_read_filters
     Array[String]? exclude_intervals
     String? gatk_config_file
+    Array[File]? input_arg
+    Array[File]? inputIndex
     Int? interval_exclusion_padding
     Int? interval_padding
     String? interval_set_rule
@@ -133,7 +133,7 @@ workflow SplitReads {
 
   }
 
-  call SplitReads {
+  call GtfToBed {
 
     input:
 
@@ -154,8 +154,7 @@ workflow SplitReads {
 
 
         # Required Arguments
-        input_arg                                          = input_arg,
-        inputIndex                                         = inputIndex,
+        gtf_path                                           = gtf_path,
         output_arg                                         = output_arg,
 
         # Optional Tool Arguments
@@ -171,9 +170,8 @@ workflow SplitReads {
         referenceIndex                                     = referenceIndex,
         referenceDictionary                                = referenceDictionary,
         sites_only_vcf_output                              = sites_only_vcf_output,
-        split_library_name                                 = split_library_name,
-        split_read_group                                   = split_read_group,
-        split_sample                                       = split_sample,
+        sort_by_transcript                                 = sort_by_transcript,
+        use_basic_transcript                               = use_basic_transcript,
 
         # Optional Common Arguments
         add_output_sam_program_record                      = add_output_sam_program_record,
@@ -186,6 +184,8 @@ workflow SplitReads {
         disable_tool_default_read_filters                  = disable_tool_default_read_filters,
         exclude_intervals                                  = exclude_intervals,
         gatk_config_file                                   = gatk_config_file,
+        input_arg                                          = input_arg,
+        inputIndex                                         = inputIndex,
         interval_exclusion_padding                         = interval_exclusion_padding,
         interval_padding                                   = interval_padding,
         interval_set_rule                                  = interval_set_rule,
@@ -207,7 +207,7 @@ workflow SplitReads {
 
   output {
     # Workflow Outputs                                  
-    File SplitReadsoutput_arg = SplitReads.SplitReads_output_arg
+    File GtfToBedresults = GtfToBed.GtfToBed_results
   }
 
   parameter_meta {
@@ -220,9 +220,8 @@ workflow SplitReads {
     bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
 
     # Required Arguments
-    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
-    inputIndex: { description: "Companion resource for input_arg" }
-    output_arg: { description: "The directory to output SAM/BAM/CRAM files." }
+    gtf_path: { description: "Path to Gencode GTF file" }
+    output_arg: { description: "Output BED file" }
 
     # Optional Tool Arguments
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
@@ -237,9 +236,8 @@ workflow SplitReads {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     sites_only_vcf_output: { description: "If true, dont emit genotype fields when writing vcf file output." }
-    split_library_name: { description: "Split file by library." }
-    split_read_group: { description: "Split file by read group." }
-    split_sample: { description: "Split file by sample." }
+    sort_by_transcript: { description: "Make each row of BED file sorted by transcript" }
+    use_basic_transcript: { description: "Only use basic transcripts" }
 
     # Optional Common Arguments
     add_output_sam_program_record: { description: "If true, adds a PG tag to created SAM/BAM/CRAM files." }
@@ -252,6 +250,8 @@ workflow SplitReads {
     disable_tool_default_read_filters: { description: "Disable all tool default read filters (WARNING: many tools will not function cor" }
     exclude_intervals: { description: "One or more genomic intervals to exclude from processing" }
     gatk_config_file: { description: "A configuration file to use with the GATK." }
+    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
+    inputIndex: { description: "Companion resource for input_arg" }
     interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }
@@ -271,7 +271,7 @@ workflow SplitReads {
   }
 }
 
-task SplitReads {
+task GtfToBed {
 
   input {
     String dockerImage
@@ -281,9 +281,8 @@ task SplitReads {
     String cpuRequirements
     String preemptibleRequirements
     String bootdisksizegbRequirements
-    Array[File] input_arg
-    Array[File]? inputIndex
-    String output_arg
+    File gtf_path
+    File output_arg
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     Boolean? disable_bam_index_caching
@@ -296,9 +295,8 @@ task SplitReads {
     File? referenceIndex
     File? referenceDictionary
     Boolean? sites_only_vcf_output
-    Boolean? split_library_name
-    Boolean? split_read_group
-    Boolean? split_sample
+    Boolean? sort_by_transcript
+    Boolean? use_basic_transcript
     Boolean? add_output_sam_program_record
     Boolean? add_output_vcf_command_line
     Boolean? create_output_bam_index
@@ -309,6 +307,8 @@ task SplitReads {
     Boolean? disable_tool_default_read_filters
     Array[String]? exclude_intervals
     String? gatk_config_file
+    Array[File]? input_arg
+    Array[File]? inputIndex
     Int? interval_exclusion_padding
     Int? interval_padding
     String? interval_set_rule
@@ -329,8 +329,8 @@ task SplitReads {
   }
 
   command <<<
-    ~{gatk} SplitReads \
-    --input ~{sep=' --input ' input_arg} \
+    ~{gatk} GtfToBed \
+    --gtf-path ~{sep=' --gtf-path ' gtf_path} \
     --output ~{sep=' --output ' output_arg} \
     ~{true='--cloud-index-prefetch-buffer ' false='' defined(cloud_index_prefetch_buffer)}~{sep=' --cloud-index-prefetch-buffer ' cloud_index_prefetch_buffer} \
     ~{true='--cloud-prefetch-buffer ' false='' defined(cloud_prefetch_buffer)}~{sep=' --cloud-prefetch-buffer ' cloud_prefetch_buffer} \
@@ -342,9 +342,8 @@ task SplitReads {
     ~{true='--intervals ' false='' defined(intervals)}~{sep=' --intervals ' intervals} \
     ~{true='--reference ' false='' defined(reference)}~{sep=' --reference ' reference} \
     ~{true='--sites-only-vcf-output ' false='' defined(sites_only_vcf_output)}~{sep=' --sites-only-vcf-output ' sites_only_vcf_output} \
-    ~{true='--split-library-name ' false='' defined(split_library_name)}~{sep=' --split-library-name ' split_library_name} \
-    ~{true='--split-read-group ' false='' defined(split_read_group)}~{sep=' --split-read-group ' split_read_group} \
-    ~{true='--split-sample ' false='' defined(split_sample)}~{sep=' --split-sample ' split_sample} \
+    ~{true='--sort-by-transcript ' false='' defined(sort_by_transcript)}~{sep=' --sort-by-transcript ' sort_by_transcript} \
+    ~{true='--use-basic-transcript ' false='' defined(use_basic_transcript)}~{sep=' --use-basic-transcript ' use_basic_transcript} \
     ~{true='--add-output-sam-program-record ' false='' defined(add_output_sam_program_record)}~{sep=' --add-output-sam-program-record ' add_output_sam_program_record} \
     ~{true='--add-output-vcf-command-line ' false='' defined(add_output_vcf_command_line)}~{sep=' --add-output-vcf-command-line ' add_output_vcf_command_line} \
     ~{true='--create-output-bam-index ' false='' defined(create_output_bam_index)}~{sep=' --create-output-bam-index ' create_output_bam_index} \
@@ -355,6 +354,7 @@ task SplitReads {
     ~{true='--disable-tool-default-read-filters ' false='' defined(disable_tool_default_read_filters)}~{sep=' --disable-tool-default-read-filters ' disable_tool_default_read_filters} \
     ~{true='--exclude-intervals ' false='' defined(exclude_intervals)}~{sep=' --exclude-intervals ' exclude_intervals} \
     ~{true='--gatk-config-file ' false='' defined(gatk_config_file)}~{sep=' --gatk-config-file ' gatk_config_file} \
+    ~{true='--input ' false='' defined(input_arg)}~{sep=' --input ' input_arg} \
     ~{true='--interval-exclusion-padding ' false='' defined(interval_exclusion_padding)}~{sep=' --interval-exclusion-padding ' interval_exclusion_padding} \
     ~{true='--interval-padding ' false='' defined(interval_padding)}~{sep=' --interval-padding ' interval_padding} \
     ~{true='--interval-set-rule ' false='' defined(interval_set_rule)}~{sep=' --interval-set-rule ' interval_set_rule} \
@@ -385,7 +385,7 @@ task SplitReads {
 
   output {
     # Task Outputs                                      
-    File SplitReads_output_arg = output_arg
+    File GtfToBed_results = stdout()
   }
 
   parameter_meta {
@@ -398,9 +398,8 @@ task SplitReads {
     bootdisksizegbRequirements: { description: "Runtime boot disk size for this task" }
 
     # Required Arguments
-    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
-    inputIndex: { description: "Companion resource for input_arg" }
-    output_arg: { description: "The directory to output SAM/BAM/CRAM files." }
+    gtf_path: { description: "Path to Gencode GTF file" }
+    output_arg: { description: "Output BED file" }
 
     # Optional Tool Arguments
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
@@ -415,9 +414,8 @@ task SplitReads {
     referenceIndex: { description: "Companion resource for reference" }
     referenceDictionary: { description: "Companion resource for reference" }
     sites_only_vcf_output: { description: "If true, dont emit genotype fields when writing vcf file output." }
-    split_library_name: { description: "Split file by library." }
-    split_read_group: { description: "Split file by read group." }
-    split_sample: { description: "Split file by sample." }
+    sort_by_transcript: { description: "Make each row of BED file sorted by transcript" }
+    use_basic_transcript: { description: "Only use basic transcripts" }
 
     # Optional Common Arguments
     add_output_sam_program_record: { description: "If true, adds a PG tag to created SAM/BAM/CRAM files." }
@@ -430,6 +428,8 @@ task SplitReads {
     disable_tool_default_read_filters: { description: "Disable all tool default read filters (WARNING: many tools will not function cor" }
     exclude_intervals: { description: "One or more genomic intervals to exclude from processing" }
     gatk_config_file: { description: "A configuration file to use with the GATK." }
+    input_arg: { description: "BAM/SAM/CRAM file containing reads" }
+    inputIndex: { description: "Companion resource for input_arg" }
     interval_exclusion_padding: { description: "Amount of padding (in bp) to add to each interval you are excluding." }
     interval_padding: { description: "Amount of padding (in bp) to add to each interval you are including." }
     interval_set_rule: { description: "Set merging approach to use for combining interval inputs" }

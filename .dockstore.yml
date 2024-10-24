@@ -100,6 +100,16 @@ workflows:
      primaryDescriptorPath: /wdls/GatherTranchesAllArgs.wdl
      testParameterFiles:
      -  /wdls/GatherTranchesAllArgsInputs.json
+   - name: GtfToBed
+     subclass: WDL
+     primaryDescriptorPath: /wdls/GtfToBed.wdl
+     testParameterFiles:
+     -  /wdls/GtfToBedInputs.json
+   - name: GtfToBedAllArgs
+     subclass: WDL
+     primaryDescriptorPath: /wdls/GtfToBedAllArgs.wdl
+     testParameterFiles:
+     -  /wdls/GtfToBedAllArgsInputs.json
    - name: LeftAlignIndels
      subclass: WDL
      primaryDescriptorPath: /wdls/LeftAlignIndels.wdl
