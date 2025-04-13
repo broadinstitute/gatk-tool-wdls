@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ApplyBQSR (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
+# Run ApplyBQSR (WDL auto generated from GATK Version 4.6.2.0-SNAPSHOT)
 #
 # Apply base quality score recalibration
 #
@@ -21,6 +21,7 @@ version 1.0
 #    outputIndex                                        Optional Companion resource for output_arg                           
 #
 #  Optional Tool Arguments
+#    allow_missing_read_group                           Do not throw an error when encountering a read group not in the recal table
 #    cloud_index_prefetch_buffer                        Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP
 #    cloud_prefetch_buffer                              Size of the cloud-only prefetch buffer (in MB; 0 to disable).
 #    disable_bam_index_caching                          If true, dont cache bam indexes, this will reduce memory requirements but may ha
@@ -93,6 +94,7 @@ workflow ApplyBQSR {
     String? outputIndex
 
     # Optional Tool Arguments
+    Boolean? allow_missing_read_group
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     Boolean? disable_bam_index_caching
@@ -169,6 +171,7 @@ workflow ApplyBQSR {
         outputIndex                                        = outputIndex,
 
         # Optional Tool Arguments
+        allow_missing_read_group                           = allow_missing_read_group,
         cloud_index_prefetch_buffer                        = cloud_index_prefetch_buffer,
         cloud_prefetch_buffer                              = cloud_prefetch_buffer,
         disable_bam_index_caching                          = disable_bam_index_caching,
@@ -240,6 +243,7 @@ workflow ApplyBQSR {
     outputIndex: { description: "Companion resource for output_arg" }
 
     # Optional Tool Arguments
+    allow_missing_read_group: { description: "Do not throw an error when encountering a read group not in the recal table" }
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
     cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
     disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }
@@ -303,6 +307,7 @@ task ApplyBQSR {
     Array[File]? inputIndex
     String output_arg
     String? outputIndex
+    Boolean? allow_missing_read_group
     Int? cloud_index_prefetch_buffer
     Int? cloud_prefetch_buffer
     Boolean? disable_bam_index_caching
@@ -354,6 +359,7 @@ task ApplyBQSR {
     --bqsr-recal-file ~{sep=' --bqsr-recal-file ' bqsr_recal_file} \
     --input ~{sep=' --input ' input_arg} \
     --output ~{sep=' --output ' output_arg} \
+    ~{true='--allow-missing-read-group ' false='' defined(allow_missing_read_group)}~{sep=' --allow-missing-read-group ' allow_missing_read_group} \
     ~{true='--cloud-index-prefetch-buffer ' false='' defined(cloud_index_prefetch_buffer)}~{sep=' --cloud-index-prefetch-buffer ' cloud_index_prefetch_buffer} \
     ~{true='--cloud-prefetch-buffer ' false='' defined(cloud_prefetch_buffer)}~{sep=' --cloud-prefetch-buffer ' cloud_prefetch_buffer} \
     ~{true='--disable-bam-index-caching ' false='' defined(disable_bam_index_caching)}~{sep=' --disable-bam-index-caching ' disable_bam_index_caching} \
@@ -430,6 +436,7 @@ task ApplyBQSR {
     outputIndex: { description: "Companion resource for output_arg" }
 
     # Optional Tool Arguments
+    allow_missing_read_group: { description: "Do not throw an error when encountering a read group not in the recal table" }
     cloud_index_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudP" }
     cloud_prefetch_buffer: { description: "Size of the cloud-only prefetch buffer (in MB; 0 to disable)." }
     disable_bam_index_caching: { description: "If true, dont cache bam indexes, this will reduce memory requirements but may ha" }

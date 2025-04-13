@@ -1,5 +1,5 @@
 {
-  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.6.1.0-SNAPSHOT",
+  "ApplyBQSR.dockerImage": "broadinstitute/gatk:4.6.2.0-SNAPSHOT",
   "ApplyBQSR.gatk": "gatk",
   "ApplyBQSR.memoryRequirements": "4G",
   "ApplyBQSR.diskRequirements": "local-disk 40 HDD",
@@ -13,6 +13,7 @@
   "ApplyBQSR.outputIndex": "String",
   "ApplyBQSR.output_arg":"String",
 
+  "ApplyBQSR.allow_missing_read_group":false,
   "ApplyBQSR.cloud_index_prefetch_buffer":-1,
   "ApplyBQSR.cloud_prefetch_buffer":40,
   "ApplyBQSR.disable_bam_index_caching":false,

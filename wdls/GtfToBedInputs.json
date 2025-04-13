@@ -1,5 +1,5 @@
 {
-  "GtfToBed.dockerImage": "broadinstitute/gatk:4.6.1.0-SNAPSHOT",
+  "GtfToBed.dockerImage": "broadinstitute/gatk:4.6.2.0-SNAPSHOT",
   "GtfToBed.gatk": "gatk",
   "GtfToBed.memoryRequirements": "4G",
   "GtfToBed.diskRequirements": "local-disk 40 HDD",

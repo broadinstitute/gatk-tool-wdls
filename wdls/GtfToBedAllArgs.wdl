@@ -1,6 +1,6 @@
 version 1.0
 
-# Run GtfToBed (WDL auto generated from GATK Version 4.6.1.0-SNAPSHOT)
+# Run GtfToBed (WDL auto generated from GATK Version 4.6.2.0-SNAPSHOT)
 #
 # Gencode GTF to BED
 #
