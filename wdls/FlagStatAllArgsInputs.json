@@ -1,5 +1,5 @@
 {
-  "FlagStat.dockerImage": "broadinstitute/gatk:4.6.2.0-SNAPSHOT",
+  "FlagStat.dockerImage": "broadinstitute/gatk:4.7.0.0-SNAPSHOT",
   "FlagStat.gatk": "gatk",
   "FlagStat.memoryRequirements": "4G",
   "FlagStat.diskRequirements": "local-disk 40 HDD",
@@ -40,6 +40,7 @@
   "FlagStat.inverted_read_filter":null,
   "FlagStat.lenient":false,
   "FlagStat.max_variants_per_shard":0,
+  "FlagStat.output_cram_version":"3.1",
   "FlagStat.QUIET":false,
   "FlagStat.read_filter":null,
   "FlagStat.read_index":null,

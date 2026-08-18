@@ -1,6 +1,6 @@
 version 1.0
 
-# Run ClipReads (WDL auto generated from GATK Version 4.6.2.0-SNAPSHOT)
+# Run ClipReads (WDL auto generated from GATK Version 4.7.0.0-SNAPSHOT)
 #
 # Clip reads in a SAM/BAM/CRAM file
 #
@@ -59,6 +59,7 @@ version 1.0
 #    inverted_read_filter                               Inverted (with flipped acceptance/failure conditions) read filters applied befor
 #    lenient                                            Lenient processing of VCF files                             
 #    max_variants_per_shard                             If non-zero, partitions VCF output into shards, each containing up to the given 
+#    output_cram_version                                The CRAM version (3.0 or 3.1) to write for CRAM output. Ignored for BAM/SAM outp
 #    QUIET                                              Whether to suppress job-summary info on System.err.         
 #    read_filter                                        Read filters to be applied before analysis                  
 #    read_index                                         Indices to use for the read inputs. If specified, an index must be provided for 
@@ -134,6 +135,7 @@ workflow ClipReads {
     Array[String]? inverted_read_filter
     Boolean? lenient
     Int? max_variants_per_shard
+    String? output_cram_version
     Boolean? QUIET
     Array[String]? read_filter
     Array[File]? read_index
@@ -213,6 +215,7 @@ workflow ClipReads {
         inverted_read_filter                               = inverted_read_filter,
         lenient                                            = lenient,
         max_variants_per_shard                             = max_variants_per_shard,
+        output_cram_version                                = output_cram_version,
         QUIET                                              = QUIET,
         read_filter                                        = read_filter,
         read_index                                         = read_index,
@@ -288,6 +291,7 @@ workflow ClipReads {
     inverted_read_filter: { description: "Inverted (with flipped acceptance/failure conditions) read filters applied befor" }
     lenient: { description: "Lenient processing of VCF files" }
     max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
+    output_cram_version: { description: "The CRAM version (3.0 or 3.1) to write for CRAM output. Ignored for BAM/SAM outp" }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }
     read_filter: { description: "Read filters to be applied before analysis" }
     read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }
@@ -352,6 +356,7 @@ task ClipReads {
     Array[String]? inverted_read_filter
     Boolean? lenient
     Int? max_variants_per_shard
+    String? output_cram_version
     Boolean? QUIET
     Array[String]? read_filter
     Array[File]? read_index
@@ -404,6 +409,7 @@ task ClipReads {
     ~{true='--inverted-read-filter ' false='' defined(inverted_read_filter)}~{sep=' --inverted-read-filter ' inverted_read_filter} \
     ~{true='--lenient ' false='' defined(lenient)}~{sep=' --lenient ' lenient} \
     ~{true='--max-variants-per-shard ' false='' defined(max_variants_per_shard)}~{sep=' --max-variants-per-shard ' max_variants_per_shard} \
+    ~{true='--output-cram-version ' false='' defined(output_cram_version)}~{sep=' --output-cram-version ' output_cram_version} \
     ~{true='--QUIET ' false='' defined(QUIET)}~{sep=' --QUIET ' QUIET} \
     ~{true='--read-filter ' false='' defined(read_filter)}~{sep=' --read-filter ' read_filter} \
     ~{true='--read-index ' false='' defined(read_index)}~{sep=' --read-index ' read_index} \
@@ -488,6 +494,7 @@ task ClipReads {
     inverted_read_filter: { description: "Inverted (with flipped acceptance/failure conditions) read filters applied befor" }
     lenient: { description: "Lenient processing of VCF files" }
     max_variants_per_shard: { description: "If non-zero, partitions VCF output into shards, each containing up to the given " }
+    output_cram_version: { description: "The CRAM version (3.0 or 3.1) to write for CRAM output. Ignored for BAM/SAM outp" }
     QUIET: { description: "Whether to suppress job-summary info on System.err." }
     read_filter: { description: "Read filters to be applied before analysis" }
     read_index: { description: "Indices to use for the read inputs. If specified, an index must be provided for " }

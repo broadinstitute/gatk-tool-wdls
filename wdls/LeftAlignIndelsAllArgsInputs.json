@@ -1,5 +1,5 @@
 {
-  "LeftAlignIndels.dockerImage": "broadinstitute/gatk:4.6.2.0-SNAPSHOT",
+  "LeftAlignIndels.dockerImage": "broadinstitute/gatk:4.7.0.0-SNAPSHOT",
   "LeftAlignIndels.gatk": "gatk",
   "LeftAlignIndels.memoryRequirements": "4G",
   "LeftAlignIndels.diskRequirements": "local-disk 40 HDD",
@@ -41,6 +41,7 @@
   "LeftAlignIndels.inverted_read_filter":null,
   "LeftAlignIndels.lenient":false,
   "LeftAlignIndels.max_variants_per_shard":0,
+  "LeftAlignIndels.output_cram_version":"3.1",
   "LeftAlignIndels.QUIET":false,
   "LeftAlignIndels.read_filter":null,
   "LeftAlignIndels.read_index":null,
